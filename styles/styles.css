@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Asul:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500&display=swap');
+
+:root {
+  --backgroundColor1: #ffa398;
+  --backgroundColor2: #F2EDCD;
+
+  --typeFace1: "Fredoka One", cursive;
+  --typeFace2: "Crimson Pro", serif;
+  --typeFace3: "Asul", sans-serif;
+  --typeFace4: 'Fredoka', sans-serif;
+
+  --textColor1:  #6B726B;
+  --textColor2:  #3D3F65;
+  --textColor3:  #FFFFFF;
+
+  --boardCardColor1: #5CD2D0;
+  --boardCardColor2: #F34D51;
+  --boardCardColor3: #7CD083;
+  --boardCardColor4: #3D79EE;
+  --boardCardColor5: #4A2614;
+  --boardCardColor6: #F2BCD6;
+  --boardCardColor7: #6537C7;
+  --boardCardColor8: #F6C739;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--typeFace1);
+}
+body {
+}
+button {
+  border: none;
+  color: aliceblue;
+  font-family: var(--typeFace3);
+  line-height: 32px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.landingPage {
+  display: flex;
+}
+.contentPanel {
+  width: 40%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.contentPanel #childrenStuff {
+  margin-top: 8%;
+}
+.contentPanel p {
+  width: 50%;
+  /* margin: auto; */
+  text-align: center;
+  font-family: var(--typeFace2);
+  line-height: 36px;
+  font-weight: 300;
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.66);
+  position: relative;
+  margin-top: 6%;
+}
+.contentPanel #line {
+  position: absolute;
+  top: 25px;
+}
+.contentPanel button {
+  width: 22%;
+  height: 46px;
+  background: #ffa398;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25),
+    0px 4px 0px rgba(224, 78, 61, 0.62);
+  border-radius: 10px;
+  margin-top: 8%;
+}
+.contentPanel #children {
+  position: absolute;
+  bottom: 0;
+}
+.contentPanel h1 {
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 97px;
+  font-size: 4rem;
+  margin-top: 6%;
+  color: #313030;
+  text-shadow: 4px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.imagePanel {
+  width: 60%;
+  height: 100vh;
+  background-color: #ffa398;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imagePanel img {
+}
+.loadingPage {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+.loadingPage img:first-child {
+  margin: 10px 0px;
+}
+.loadingPage img:last-child {
+  margin: 40px 0px;
+}
+.loadingPage .msgToPlayer{
+
+    position: relative;
+    width: 400px;
+    height: 200px;
+}
+.loadingPage p {
+  font-family: var(--typeFace2);
+  line-height: 32px;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 20px 0px;
+  color: rgba(0, 0, 0, 0.66);
+  margin: 80px 0px;
+  position: absolute;
+  width: 100%;
+}
+
+.playGround .thePlayers{
+    /* width: 40%; */
+    background-color: aquamarine;
+    /* height: 100vh; */
+}
+.hidden {
+  display: none !important;
+}
+button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 40px rgb(201, 199, 199);
+  }
+  
+  button:active:after {
+    box-shadow: 0 0 0 0 rgb(201, 199, 199);
+    position: absolute;
+    border-radius: 10px;
+    left: 0;
+    top:0;
+    opacity: 1;
+    transition: 0s;
+  }
+  
+  button:active {
+    top: 1px;
+  }

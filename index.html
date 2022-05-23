@@ -1,12 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monopoly</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/animation.css" />
+    <link rel="stylesheet" href="styles/board grid.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="landingPage hidden">
+        <div class="contentPanel">
+          <img id="childrenStuff" src="assets/img/children stuffs.png" alt="" />
+          <h1>MONOPOLY</h1>
+
+          <p>
+            <img
+              id="line"
+              width="94.5px"
+              height="14.56px;"
+              src="assets/img/line.svg"
+              alt=""
+            />
+            Let's reminisce about our childhood days filled with joys and fun
+          </p>
+          <button class="slide-bottom" onclick="startNow()">START</button>
+          <img id="children" src="assets/img/children.svg" alt="" />
+        </div>
+        <div class="imagePanel">
+          <img
+            class="slide-bottom"
+            width="90%"
+            src="assets/img/board.svg"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <div class="loadingPage hidden">
+        <img
+          class="fade-in"
+          src="assets/img/monopoly logo.png"
+          width="30%"
+          alt=""
+        />
+        <div class="msgToPlayer">
+          <p class="fade-in" id="msg1">
+            Recongizne this logo <br />
+            That’s me Mr. Monopoly
+          </p>
+          <p id="msg2" class="fade-in hidden">
+            I promise I will bring you <br />
+            back to the old days
+          </p>
+          <p id="msg3" class="fade-in hidden">
+            Let’s get started
+            <br />
+            Remember dont forget to had fun
+          </p>
+        </div>
+        <img
+          class="rotate-90-cw"
+          width="2%"
+          src="assets/img/refresh.png"
+          alt=""
+        />
+      </div>
+
+      <div class="playGround fade-in">
+        <div class="theBoard">
+          <!-- Start -->
+          <div class="boardGrid" id="B1">
+            <p>Let's Travel</p>
+            <img width="80px" src="assets/img/world.png" alt="" />
+            <p id="budgetLimit">
+              Every Travel <br />
+              Buget $200
+            </p>
+            <img width="23px" src="assets/img/arrow.png" alt="" />
+          </div>
+
+          <!-- tokyo -->
+          <div class="boardGrid cardDesign1" id="B2">
+            <p>Japan</p>
+            <p>Tokyo</p>
+            <img width="60px" src="assets/img/tokyo.png" alt="" />
+            <p>$200</p>
+          </div>
+
+          <!-- mystery card -->
+          <div class="boardGrid cardDesign1" id="B3">
+            <img width="60px" src="assets/img/mystery.png" alt="" />
+            <p class="mystery">Mystery Card</p>
+          </div>
+
+          <!-- osaka card -->
+          <div class="boardGrid cardDesign1" id="B4">
+            <p>Japan</p>
+            <p>Osaka</p>
+            <img width="60px" src="assets/img/osaka.png" alt="" />
+            <p>$200</p>
+          </div>
+
+          <!-- travel fee -->
+          <div class="boardGrid cardDesign2" id="B5">
+            <p class="mystery">
+              Travel <br />
+              Fee
+            </p>
+            <p class="mystery">$100</p>
+          </div>
+
+          <!-- train station -->
+          <div class="boardGrid cardDesign2" id="B6">
+            <p class="mystery">
+              Train <br />
+              Station
+            </p>
+            <p class="mystery">$100</p>
+          </div>
+
+          <!-- new york -->
+          <div class="boardGrid cardDesign1" id="B7">
+            <p>United State</p>
+            <p>New York</p>
+            <img width="60px" src="assets/img/statue-of-liberty.png" alt="" />
+            <p>$100</p>
+          </div>
+
+          <!-- mystery card -->
+          <div class="boardGrid cardDesign1" id="B8">
+            <img width="60px" src="assets/img/mystery.png" alt="" />
+            <p class="mystery">Mystery Card</p>
+          </div>
+
+          <!-- san fra -->
+          <div class="boardGrid cardDesign1" id="B9">
+            <p>United State</p>
+            <p>San Fraciso</p>
+            <img width="60px" src="assets/img/sanfra.png" alt="" />
+            <p>$100</p>
+          </div>
+
+          <!-- washing -->
+          <div class="boardGrid cardDesign1" id="B10">
+            <p>United State</p>
+            <p>Washington</p>
+            <img width="60px" src="assets/img/washindc.png" alt="" />
+            <p>$120</p>
+          </div>
+
+          <!-- police station -->
+          <div class="boardGrid" id="B11"></div>
+
+          <!-- london -->
+          <div class="boardGrid cardDesign1" id="B12">
+            <div class="rotateCard">
+              <p>United Kingdom</p>
+              <p>London</p>
+              <img width="60px" src="assets/img/london.png" alt="" />
+              <p>$140</p>
+            </div>
+          </div>
+
+          <!-- museum -->
+          <div class="boardGrid cardDesign1" id="B13">
+            <div class="rotateCard">
+              <p>United Kingdom</p>
+              <p>Museum</p>
+              <img width="60px" src="assets/img/museum.png" alt="" />
+              <p>$140</p>
+            </div>
+          </div>
+
+          <!-- mystery card -->
+          <div class="boardGrid cardDesign1" id="B14">
+            <div class="rotateCard3">
+              <img width="60px" src="assets/img/mystery.png" alt="" />
+              <p class="mystery">
+                Mystery <br />
+                Card
+              </p>
+            </div>
+          </div>
+
+          <!-- tower -->
+          <div class="boardGrid cardDesign1" id="B15">
+            <div class="rotateCard">
+              <p>United Kingdom</p>
+              <p>Tower</p>
+              <img width="60px" src="assets/img/tower.png" alt="" />
+              <p>$160</p>
+            </div>
+          </div>
+
+          <!-- train fee -->
+          <div class="boardGrid cardDesign2" id="B16">
+            <div class="rotateCard4">
+              <p class="mystery">
+                Train <br />
+                Station
+              </p>
+              <p class="mystery">$100</p>
+            </div>
+          </div>
+
+          <!-- auaurium -->
+          <div class="boardGrid cardDesign1" id="B17">
+            <div class="rotateCard">
+              <p>Dubai</p>
+              <p>Aqaurium</p>
+              <img width="60px" src="assets/img/aqa.png" alt="" />
+              <p>$180</p>
+            </div>
+          </div>
+
+          <!-- ski dubai -->
+          <div class="boardGrid cardDesign1" id="B18">
+            <div class="rotateCard">
+              <p>Dubai</p>
+              <p>Ski Dubai</p>
+              <img width="60px" src="assets/img/ski.png" alt="" />
+              <p>$180</p>
+            </div>
+          </div>
+
+          <!-- mystery card -->
+          <div class="boardGrid cardDesign2" id="B19">
+            <div class="rotateCard3">
+              <img width="60px" src="assets/img/food stall.png" alt="" />
+              <p class="mystery">
+                Mystery <br />
+                Card
+              </p>
+            </div>
+          </div>
+
+          <!-- barji Ai -->
+          <div class="boardGrid cardDesign1" id="B20">
+            <div class="rotateCard">
+              <p>Dubai</p>
+              <p>Barj Ai</p>
+              <img width="60px" src="assets/img/bar.png" alt="" />
+              <p>$200</p>
+            </div>
+          </div>
+
+          <!-- resting place -->
+          <div class="boardGrid" id="B21"></div>
+
+          <!-- marina bay-->
+          <div class="boardGrid cardDesign1" id="B22">
+            <p>Singapore</p>
+            <p>Marina Bay</p>
+            <img width="60px" src="assets/img/maribay.png" alt="" />
+            <p>$220</p>
+          </div>
+
+          <!-- mystery card -->
+          <div class="boardGrid cardDesign1" id="B23">
+            <img width="60px" src="assets/img/mystery.png" alt="" />
+            <p class="mystery">Mystery Card</p>
+          </div>
+
+          <!-- chinatown -->
+          <div class="boardGrid cardDesign1" id="B24">
+            <p>Singapore</p>
+            <p>Chinatown</p>
+            <img width="60px" src="assets/img/chinatown.png" alt="" />
+            <p>$220</p>
+          </div>
+
+          <!-- universal -->
+          <div class="boardGrid cardDesign1" id="B25">
+            <p>Singapore</p>
+            <p>Universal</p>
+            <img width="60px" src="assets/img/universal.png" alt="" />
+            <p>$240</p>
+          </div>
+
+          <!-- train fee -->
+          <div class="boardGrid" id="B26"></div>
+
+          <!-- jardin du -->
+          <div class="boardGrid cardDesign1" id="B27">
+            <p>France</p>
+            <p>Jardin Du</p>
+            <img width="60px" src="assets/img/paris1.png" alt="" />
+            <p>$260</p>
+          </div>
+
+          <!-- plae dela -->
+          <div class="boardGrid cardDesign1" id="B28">
+            <p>France</p>
+            <p>Place dela</p>
+            <img width="60px" src="assets/img/paris2.png" alt="" />
+            <p>$260</p>
+          </div>
+
+          <!-- food stall -->
+          <div class="boardGrid" id="B29"></div>
+
+          <!-- eiffle tower -->
+          <div class="boardGrid cardDesign1" id="B30">
+            <p>France</p>
+            <p>Eiffle Tower</p>
+            <img width="60px" src="assets/img/eiffle tower.png" alt="" />
+            <p>$280</p>
+          </div>
+
+          <!-- police man -->
+          <div class="boardGrid" id="B31"></div>
+
+          <!-- jeju do -->
+          <div class="boardGrid cardDesign1" id="B32">
+            <div class="rotateCard2">
+              <p>South Korea</p>
+              <p>Jeju Do</p>
+              <img width="60px" src="assets/img/jeju.png" alt="" />
+              <p>$300</p>
+            </div>
+          </div>
+
+          <!-- seoul -->
+          <div class="boardGrid cardDesign1" id="B33">
+            <div class="rotateCard2">
+              <p>South Korea</p>
+              <p>Seoul</p>
+              <img width="60px" src="assets/img/seoul.png" alt="" />
+              <p>$300</p>
+            </div>
+          </div>
+
+          <!-- mystery card -->
+          <div class="boardGrid" id="B34"></div>
+
+          <!-- bulguka -->
+          <div class="boardGrid cardDesign1" id="B35">
+            <div class="rotateCard2">
+              <p>Sout Korea</p>
+              <p>Bulguka</p>
+              <img width="60px" src="assets/img/korea1.png" alt="" />
+              <p>$320</p>
+            </div>
+          </div>
+
+          <!-- train fee  -->
+          <div class="boardGrid" id="B36"></div>
+
+          <!-- food stall -->
+          <div class="boardGrid" id="B37"></div>
+
+          <!-- pangodas -->
+          <div class="boardGrid cardDesign1" id="B38">
+            <div class="rotateCard2">
+              <p>Thailand</p>
+              <p>Pagodas</p>
+              <img width="60px" src="assets/img/pagoda.png" alt="" />
+              <p>$350</p>
+            </div>
+          </div>
+
+          <!-- travel fees -->
+          <div class="boardGrid" id="B39"></div>
+
+          <!-- shopping mall -->
+          <div class="boardGrid cardDesign1" id="B40">
+            <div class="rotateCard2">
+              <p>Thailand</p>
+              <p>Mall</p>
+              <img width="60px" src="assets/img/shopping mall.png" alt="" />
+              <p>$400</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="thePlayers"></div>
+      </div>
+    </div>
+
+    <script src="scripts/style.js"></script>
+  </body>
 </html>
