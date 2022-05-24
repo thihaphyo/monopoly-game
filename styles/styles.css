@@ -1,29 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Asul:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500&display=swap");
 
 :root {
   --backgroundColor1: #ffa398;
-  --backgroundColor2: #F2EDCD;
+  --backgroundColor2: #f2edcd;
 
   --typeFace1: "Fredoka One", cursive;
   --typeFace2: "Crimson Pro", serif;
   --typeFace3: "Asul", sans-serif;
-  --typeFace4: 'Fredoka', sans-serif;
+  --typeFace4: "Fredoka", sans-serif;
 
-  --textColor1:  #6B726B;
-  --textColor2:  #3D3F65;
-  --textColor3:  #FFFFFF;
+  --textColor1: #6b726b;
+  --textColor2: #3d3f65;
+  --textColor3: #ffffff;
+  --textColor4: #31357C;
 
-  --boardCardColor1: #5CD2D0;
-  --boardCardColor2: #F34D51;
-  --boardCardColor3: #7CD083;
-  --boardCardColor4: #3D79EE;
-  --boardCardColor5: #4A2614;
-  --boardCardColor6: #F2BCD6;
-  --boardCardColor7: #6537C7;
-  --boardCardColor8: #F6C739;
+
+  --boardCardColor1: #5cd2d0;
+  --boardCardColor2: #f34d51;
+  --boardCardColor3: #7cd083;
+  --boardCardColor4: #3d79ee;
+  --boardCardColor5: #4a2614;
+  --boardCardColor6: #f2bcd6;
+  --boardCardColor7: #6537c7;
+  --boardCardColor8: #f6c739;
 }
 * {
   margin: 0;
@@ -117,11 +119,10 @@ button {
 .loadingPage img:last-child {
   margin: 40px 0px;
 }
-.loadingPage .msgToPlayer{
-
-    position: relative;
-    width: 400px;
-    height: 200px;
+.loadingPage .msgToPlayer {
+  position: relative;
+  width: 400px;
+  height: 200px;
 }
 .loadingPage p {
   font-family: var(--typeFace2);
@@ -135,38 +136,206 @@ button {
   width: 100%;
 }
 
-.playGround .thePlayers{
-    /* width: 40%; */
-    background-color: aquamarine;
-    /* height: 100vh; */
+.boardCenter, .playGround, .playerAvatar #p1, .playerAvatar #p2,.playerAvatar #p3,.playerStatus{
+  position: absolute;
+
+}
+.boardCenter {
+  width: 43.5%;
+  height: 986px;
+  top: 162px;
+  left: 160px;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ background-image: url('../assets/img/svg/theWorld.svg');
+ background-size: 60%;
+}
+.boardCenter h1{
+  width: 100%;
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 51%;
+  letter-spacing: 0.05em;
+  color: #023059;
+  text-shadow: 4px 8px 0px rgba(0, 0, 0, 0.15);
+  background-color: #f2edcd;
+
+}
+.playerStatus{
+  min-width: 700px;
+  min-height: 100px;
+  background-color: #fffffffe;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  border-radius: 10px;
+  right: 8%;
+  z-index: 1;
+  padding: 30px;
+  box-shadow: inset 0px -6px 0px #b5b29b;
+  /* mix-blend-mode: darken; */
+    /* border-bottom: 10px solid #b5b29b; */
+  }
+  .playerStatusBar{
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.playerInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding-left: 20px;
+}
+.playerStatusBar img,.playerStatus h1{
+  /* padding: 20px; */
+}
+.playerAvatar #p1{
+  top: 0px;
+  left: 30px;
+}
+.playerAvatar #p2{
+  top: 50px;
+  left: 30px;
+}
+.playerAvatar #p3{
+  top: 100px;
+  left: 30px;
+}
+#playerOneColor{
+  
+}
+.mysteryCardsPanel, .winnerCards, .propertyBuy{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(83, 82, 82, 0.316);
+  color: var(--textColor2);
+
+}
+.mysteryCardsPanel div,.winnerCards div{
+  position: absolute;
+  width: 20%;
+  height: 40%;
+  margin: auto;
+  text-align: center;
+  background-color: #ffffff;
+  top: 30%;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px;
+  
+}
+.propertyBuy div{
+  position: absolute;
+  width: 20%;
+  height: 50%;
+  margin: auto;
+  text-align: center;
+  background-color: var(--boardCardColor1);
+  color: var(--textColor3) !important;
+  top: 20%;
+  left: 40%;
+  border: 6px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 0px;
+}
+.propertyBuy div h1{
+  font:10rem;
+}
+.propertyBuy div p
+{
+  font-size: 1.2rem;
+}
+.propertyBuy div #buy{
+  background-color: #ffffff;
+  width:  30%;
+  font-size: 1.4rem;
+  width: 40%;
+  padding: 10px 0px;
+  color: #313030;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.propertyBuy div #cancel{
+  width:  30%;
+  font-size: 1.4rem;
+  width: 40%;
+  padding: 10px 0px;
+  color: #3130307b;
+  background-color: transparent;
+  text-decoration: underline;
+}
+.mysteryCardsPanel div p,.winnerCards div p,.propertyBuy div p{
+  font-family: var(--typeFace3);
+}
+.winnerCards{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #8381813c;
+}
+.winnerCards img{
+  /* position: absolute; */
+  z-index: 3;
+}
+.showPlayerProperties{
+  width:80%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.showPlayerProperties .circle{
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+}
+.propertyName{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+.propertyName h3{
+  padding: 10px;
+  padding-right: 20px;
+}
+.showPlayerProperties .dummy{
+  width: 100px;
+  height: 100px;
 }
 .hidden {
   display: none !important;
 }
 button:after {
-    content: "";
-    display: block;
-    position: absolute;
-    border-radius: 10px;
-    left: 0;
-    top:0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: all 0.5s;
-    box-shadow: 0 0 10px 40px rgb(201, 199, 199);
-  }
-  
-  button:active:after {
-    box-shadow: 0 0 0 0 rgb(201, 199, 199);
-    position: absolute;
-    border-radius: 10px;
-    left: 0;
-    top:0;
-    opacity: 1;
-    transition: 0s;
-  }
-  
-  button:active {
-    top: 1px;
-  }
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  box-shadow: 0 0 10px 40px rgb(201, 199, 199);
+}
+
+button:active:after {
+  box-shadow: 0 0 0 0 rgb(201, 199, 199);
+  position: absolute;
+  border-radius: 10px;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+button:active {
+  top: 1px;
+}

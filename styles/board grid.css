@@ -1,20 +1,21 @@
 .playGround {
   display: flex;
   width: 100%;
-  background-color: var(--backgroundColor2);
+  background-color: #ffffff !important;
   flex-direction: column;
+  overflow-y: scroll;
   /* justify-content: flex-end; */
 }
-.playGround .theBoard {
-  width: 100%;
-  height: 100vh;
+.playGround > .theBoard {
   display: grid;
   grid-template-columns: 160px repeat(9, 110px) 160px;
   grid-template-rows: 160px repeat(9, 110px) 160px;
   transform: rotate(-180deg);
   justify-content: end;
-  overflow-y: scroll;
-}
+  background-color: var(--backgroundColor2);
+  z-index: -1;
+}   
+
 .boardGrid {
   border: 4px solid #ffffff;
   border-collapse: collapse;
