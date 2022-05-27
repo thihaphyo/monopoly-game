@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/animation.css" />
     <link rel="stylesheet" href="styles/board grid.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -71,40 +72,62 @@
 
       <div class="playGround fade-in">
         <div class="playerStatus draggable">
+          <div class="turn" id="turn">
+            Logan's Turn
+          </div>
           <div class="playerStatusBar">
             <img width="80px" src="assets/img/avatars/avatar.png" alt="" />
             <div class="playerInfo">
-              <p class="playerName">Logan</p>
-              <h1 class="playerMoney" id="p1Monery">$1500</h1>
+              <p class="playerName" id="p1Name">Logan</p>
+              <h1 class="playerMoney" id="p1Money">$1500</h1>
             </div>
           </div>
           <div class="showPlayerProperties">
             <div class="dummy"></div>
-            <div class="propertyName">
+            <div class="propertyName" id="p1Property">
+              <!-- <h3>- Tokyo</h3>
               <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
+              <h3>- Tokyo</h3> -->
+            </div>
+            <div id="diceContainer" class="diceContainer hidden">
+              <img id="die1" src="assets/img/dice/dice_1.png"/>
+              <img id="die2" src="assets/img/dice/dice_2.png"/>
+              <div id="diceResult" class="rollResult">
+                Logan got 6
+              </div>
             </div>
           </div>
 
           <div class="playerStatusBar">
             <img width="80px" src="assets/img/avatars/avatar2.png" alt="" />
             <div class="playerInfo">
-              <p class="playerName" id="playerTwoName">Jame</p>
-              <h1 class="playerMoney" id="p1Monery">$1500</h1>
+              <p class="playerName" id="p2Name">Jame</p>
+              <h1 class="playerMoney" id="p2Money">$1500</h1>
             </div>
           </div>
           <div class="showPlayerProperties">
             <div class="dummy"></div>
-            <div class="propertyName">
+            <div id="p2Property" class="propertyName">
+              <!-- <h3>- Tokyo</h3>
               <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
+              <h3>- Tokyo</h3> -->
             </div>
           </div>
+          <div>
+            <button id="btnRollDice">Roll!</button>
+          </div>
         </div>
+        <!-- <div class="player2" id="p2Icon">
+          
+        </div> -->
         <div class="theBoard">
           <!-- Start -->
+          <div class="player1" id="p1Icon">
+
+          </div>
+          <div class="player2" id="p2Icon">
+
+          </div>
           <div class="boardGrid" id="B1">
             <p>Let's Travel</p>
             <img width="80px" src="assets/img/png/world.png" alt="" />
@@ -897,5 +920,7 @@
       });
     </script>
     <script src="scripts/style.js"></script>
+    <script src="scripts/Objects.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>

@@ -339,3 +339,68 @@ button:active:after {
 button:active {
   top: 1px;
 }
+
+#btnRollDice {
+  width: 200px;
+  background-color: transparent !important;
+  color: var(--boardCardColor3);
+  font-family: var(--typeFace1);
+  border: 1px solid var(--boardCardColor3);
+  border-radius: 5px;
+  font-size: 13px;
+  float: right;
+  cursor: pointer;
+}
+
+.turn {
+  color: var(--boardCardColor4);
+  padding-left: 30px;
+}
+
+.diceContainer {
+  position: absolute;
+  left: 70%;
+}
+
+.diceContainerP1 {
+  top: 15% !important;
+  /* 15 55 */
+}
+
+.diceContainerP2 {
+  top: 55% !important;
+  /* 15 55 */
+}
+
+.diceContainer > img {
+  width: 80px;
+  height: 80px;
+  margin-right: 5px;
+  border-radius: 8px;
+
+}
+
+#diceResult {
+  text-align: center;
+  margin-top: 5px;
+  font-family: var(--typeFace4);
+  font-size: 12px;
+}
+
+#p1Icon, #p2Icon {
+  display: inline-block;
+  background-color: var(--textColor2);
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 260px;
+  top: 10px;
+  z-index: 1000;
+
+
+}
+
+#p2Icon {
+  background-color: var(--textColor1) !important;
+  left: 240px;
+}
