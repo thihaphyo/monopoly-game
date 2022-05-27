@@ -19,6 +19,10 @@ const readyPlayers = () => {
     });
     if ([player1,player2].filter((data) => data.currentPosition != 0).length >= 2) { playersMoveOut = true}
     console.log(log);
+    if (currentPlayer.playeName == player2.playeName) {
+        //ai
+        rollDice();
+    }
 }
 
 const rollDice = () => {
@@ -169,23 +173,32 @@ const gameLogic = () => {
 }
 
 function onSuccessPassTravelBudget() {
-    window.alert('You got $200');
+    window.alert( currentPlayer.playeName +' got $200');
 }
 
 function onPromptUserToBuy(tile) {
-    if (confirm("Buy " + tile.tileName + "?")) {
-        if(currentPlayer.playeName == player1.playeName) {
-            player1.buyProperty(tile, onSuccessBuy);
-        } else {
+    //ai
+    if(currentPlayer.playeName == player2.playeName) {
+        if (currentPlayer.amount > (tile.tileAmount + 50 ) ) {
             player2.buyProperty(tile, onSuccessBuy);
+        } else {
+            console.log('Player Skipped');
         }
-      } else {
-          console.log('Player Skipped');
+    } else{
+        if (confirm("Buy " + tile.tileName + "?")) {
+            if(currentPlayer.playeName == player1.playeName) {
+                player1.buyProperty(tile, onSuccessBuy);
+            } else {
+                player2.buyProperty(tile, onSuccessBuy);
+            }
+          } else {
+              console.log('Player Skipped');
+        }
     }
 }
 
 function onFailMoneyProcess() {
-    window.alert('You do not have enough money');
+    window.alert(currentPlayer.playeName + ' do not have enough money');
 }
 
 function onPayGovTax(amt){
@@ -209,10 +222,10 @@ function onSuccessMystery(random, plusOrMinus) {
 const checkGameStatus = () => {
     if (player1.amount <= 0 ) {
         isGameOver = true;
-        window.alert('Player 1 Wins');
+        window.alert(player2.playeName+' Wins');
     } else if (player2.amount <= 0 ) {
         isGameOver = true;
-        window.alert('Player 2 Wins');
+        window.alert(player1.playeName+' Wins');
     }
 
     if (isGameOver) {
