@@ -165,10 +165,14 @@ Player.prototype.landOnTravelBudget = function(onSuccess) {
     onSuccess();
 }
 
+Player.prototype.collectTax = function(tax) {
+    this.amount+=tax;
+}
+
 Player.prototype.landedOnProperty = function(property,
     onPromptUserToBuy,
     onFailMoneyProcess,
-    onPayTax) {
+    onPayTax,onCollectRent) {
     if(property.ownedBy == null) {
         //can buy
         if(this.amount >= property.tileAmount) {
@@ -183,7 +187,10 @@ Player.prototype.landedOnProperty = function(property,
         this.deduct(tax);
         onPayTax(tax);
     } else {
-        // landed on owned property
+        // landed on owned property collect rent
+        let rent = property.tileAmount * 0.08;
+        this.collectTax(rent);
+        onCollectRent(rent);
         console.log('DO NOTHING');
     }
 

@@ -145,7 +145,8 @@ const gameLogic = () => {
             player1.landedOnProperty(tile,
                 onPromptUserToBuy,
                 onFailMoneyProcess,
-                onPayTaxDuetoOtherPlayerProps );
+                onPayTaxDuetoOtherPlayerProps,
+                onCollectRent );
         } else if (tile.tileType.rule == rule.tax) {
             player1.payGovTaxes(tile, onPayGovTax);
         } else if (tile.tileType.rule == rule.mystery) {
@@ -162,7 +163,8 @@ const gameLogic = () => {
             player2.landedOnProperty(tile,
                 onPromptUserToBuy,
                 onFailMoneyProcess,
-                onPayTaxDuetoOtherPlayerProps );
+                onPayTaxDuetoOtherPlayerProps,
+                onCollectRent );
         } else if (tile.tileType.rule == rule.tax) {
             player2.payGovTaxes(tile, onPayGovTax);
         } else if (tile.tileType.rule == rule.mystery) {
@@ -170,6 +172,10 @@ const gameLogic = () => {
         }
     }
 
+}
+
+function onCollectRent(rent) {
+    window.alert(currentPlayer.playeName + ' collect rent of $' + rent + ' from his owned property');
 }
 
 function onSuccessPassTravelBudget() {
@@ -207,6 +213,11 @@ function onPayGovTax(amt){
 
 function onPayTaxDuetoOtherPlayerProps(tax) {
     window.alert(currentPlayer.playeName +' paid '+ tax + " for landing on other player's property");
+    if (currentPlayer.playeName != player1.playeName) {
+        player1.collectTax(tax);
+    } else {
+        player2.collectTax(tax);
+    }
 }
 
 function onSuccessBuy(amt) {
