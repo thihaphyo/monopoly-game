@@ -15,7 +15,7 @@
   --textColor1: #6b726b;
   --textColor2: #3d3f65;
   --textColor3: #ffffff;
-  --textColor4: #31357C;
+  --textColor4: #474860;
 
 
   --boardCardColor1: #5cd2d0;
@@ -26,6 +26,15 @@
   --boardCardColor6: #f2bcd6;
   --boardCardColor7: #6537c7;
   --boardCardColor8: #f6c739;
+
+  --avatar1BgColor: #E7C0FF;
+  --avatar2BgColor: #95C4FC;
+  --avatar1TextColor1: #826495;
+  --avatar1TextColor2: #473351;
+  --avatar2TextColor1: #365881;
+  --avatar2TextColor2: #243243;
+
+
 }
 * {
   margin: 0;
@@ -85,7 +94,7 @@ button {
   position: absolute;
   bottom: 0;
 }
-.contentPanel h1 {
+.contentPanel h1,.playerSection > div > h1,.center h1 {
   font-weight: 400;
   letter-spacing: 0.05em;
   line-height: 97px;
@@ -136,7 +145,7 @@ button {
   width: 100%;
 }
 
-.boardCenter, .playGround, .playerAvatar #p1, .playerAvatar #p2,.playerAvatar #p3,.playerStatus{
+.boardCenter, .playGround, .playerAvatar #p1, .playerAvatar #p2,.playerAvatar #p3{
   position: absolute;
 
 }
@@ -150,45 +159,84 @@ button {
   background-size: cover;
  background-image: url('../assets/img/svg/theWorld.svg');
  background-size: 60%;
+ background-color: var(--backgroundColor2);
 }
 .boardCenter h1{
   width: 100%;
   font-size: 5rem;
   text-align: center;
-  margin-top: 51%;
   letter-spacing: 0.05em;
   color: #023059;
   text-shadow: 4px 8px 0px rgba(0, 0, 0, 0.15);
   background-color: #f2edcd;
 
 }
-.playerStatus{
-  min-width: 700px;
-  min-height: 100px;
-  background-color: #fffffffe;
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
-  border-radius: 10px;
-  right: 8%;
+.playerSection{
+  width: 40%;
+  height: 100vh;
+  margin-left: 40px;
+  background-color: #ffffff;
+  border-radius: 1%;
   z-index: 1;
-  padding: 30px;
-  box-shadow: inset 0px -6px 0px #b5b29b;
-  /* mix-blend-mode: darken; */
-    /* border-bottom: 10px solid #b5b29b; */
-  }
-  .playerStatusBar{
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.031);
+
+}
+.playerSection > div > h1{
+ 
+  margin-top: 0 !important;
+  margin-bottom: 3  0px;
+}
+.playerStatusBar{
+  width: 60%;
+  display: flex;
+  padding: 10px;
   align-items: center;
-  margin-top: 30px;
-  margin-left: 30px;
+  text-align: center; 
+  box-shadow: 3px 11px 2px rgba(222, 211, 211, 0.25), inset 0px -6px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin: auto;
+  position: relative;
+  margin-top: 40px;
+
+}
+.playerStatusBar img{
+  padding: 10px;
+}
+.playerStatusBar img:nth-child(2){
+  position: absolute;
+  right: -8px;
+  width: 30%;
+}
+.avatar1{
+  background-color: var(--avatar1BgColor);
+}
+.avatar1 p:first-child{
+  color: var(--avatar1TextColor1);
+}
+.avatar1 h1{
+  color: var(--avatar1TextColor2);
+}
+.avatar2 {
+  background-color: var(--avatar2BgColor);
+}
+.avatar2 p:first-child{
+  color: var(--avatar2TextColor1);
+}
+.avatar2 h1{
+  color: var(--avatar2TextColor2);
 }
 .playerInfo{
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  padding-left: 20px;
+  justify-content: flex-start;
+  text-align: left;
 }
-.playerStatusBar img,.playerStatus h1{
-  /* padding: 20px; */
+
+.playerAvatar{
+  z-index: 2;
 }
 .playerAvatar #p1{
   top: 0px;
@@ -202,8 +250,62 @@ button {
   top: 100px;
   left: 30px;
 }
-#playerOneColor{
-  
+.rollTheDice{
+  width: 60%;
+  margin: auto;
+}
+.rollTheDice div{
+  position: relative;
+}
+.rollTheDice button{
+  width: 100%;
+  color: var(--textColor3);
+  background-color: var(--backgroundColor1);
+  padding: 30px;
+  box-shadow: 3px 11px 2px rgba(222, 211, 211, 0.25), inset 0px -6px 0px rgba(0, 0, 0, 0.25);
+  font-family: var(--typeFace2);
+  font-size: 1.8rem;
+  border-radius: 20px;
+  border: none;
+}
+.rollTheDice button:hover{
+  box-shadow: 0px 15px 25px -5px rgba(darken(dodgerblue, 40%));
+  transform: scale(1.03);
+}
+.rollTheDice button:active{
+  box-shadow:0px 4px 8px rgba(darken(dodgerblue, 30%));
+  transform: scale(.98);
+}
+.propertiesCards{
+  background-color: #ffffff;
+  width: 60%;
+  min-height: 200px;
+  margin: auto;
+  box-sizing: border-box;
+  text-align: left;
+  /* padding: 30px; */
+  display: flex;
+  color: var(--textColor4);
+}
+.property{
+  width: 50%; 
+}
+.propertiesCards div{
+  margin-top: 20px;
+}
+.propertiesCards div h2{
+  margin-bottom: 20px;
+}
+.propertiesCards div p{
+  font-size: 1.2rem;
+}
+.gridForProperty{
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: auto auto;
+  row-gap: 20px;
+  /* background-color: blue; */
+
 }
 .mysteryCardsPanel, .winnerCards, .propertyBuy{
   position: relative;
@@ -285,40 +387,26 @@ button {
   /* position: absolute; */
   z-index: 3;
 }
-.showPlayerProperties{
-  width:80%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-.showPlayerProperties .circle{
-    margin-left: 10px;
-    margin-bottom: 10px;
-
-}
-.propertyName{
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-}
-.propertyName h3{
-  padding: 10px;
-  padding-right: 20px;
-}
-.showPlayerProperties .dummy{
-  width: 100px;
-  height: 100px;
-}
 .hidden {
   display: none !important;
+}
+
+.dice div{
+  position: relative;
+  width: fit-content;
+}
+#rollDice{
+  background-color: var(--textColor4) !important;
+  padding: 10px;
+  border-radius: 10px;
 }
 button:after {
   content: "";
   display: block;
-  position: absolute;
-  border-radius: 10px;
-  left: 0;
+  position: absolute  ;
   top: 0;
+  left: 0;
+  border-radius: 10px;
   width: 100%;
   height: 100%;
   opacity: 0;

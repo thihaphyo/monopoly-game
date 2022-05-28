@@ -1,853 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monopoly</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/animation.css" />
-    <link rel="stylesheet" href="styles/board grid.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="landingPage hidden">
-        <div class="contentPanel">
-          <img id="childrenStuff" src="assets/img/children stuffs.png" alt="" />
-          <h1>MONOPOLY</h1>
 
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monopoly</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/animation.css" />
+  <link rel="stylesheet" href="styles/board grid.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="landingPage">
+      <div class="contentPanel">
+        <img id="childrenStuff" src="assets/img/png/children stuffs.png" alt="" />
+        <h1>MONOPOLY</h1>
+        <p>
+          <img id="line" width="94.5px" height="14.56px;" src="assets/img/svg/line.svg" alt="" />
+          Let's reminisce about our childhood days filled with joys and fun
+        </p>
+        <button class="slide-bottom" onclick="startNow()">START</button>
+        <img id="children" src="assets/img/svg/children.svg" alt="" />
+      </div>
+      <div class="imagePanel">
+        <img class="slide-bottom" width="90%" src="assets/img/svg/board.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="loadingPage hidden">
+      <img class="fade-in" src="assets/img/png/monopoly logo.png" width="30%" alt="" />
+      <div class="msgToPlayer">
+        <p class="fade-in" id="msg1">
+          Recongizne this logo <br />
+          That’s me Mr. Monopoly
+        </p>
+        <p id="msg2" class="fade-in hidden">
+          I promise I will bring you <br />
+          back to the old days
+        </p>
+        <p id="msg3" class="fade-in hidden">
+          Let’s get started
+          <br />
+          Remember dont forget to had fun
+        </p>
+      </div>
+      <img class="rotate-90-cw" width="2%" src="assets/img/png/refresh.png" alt="" />
+    </div>
+
+    <div class="playGround fade-in hidden">
+      <div class="center">
+          <h1>MONOPOLY </h1>
+      </div>
+      <div class="theBoard">
+        <!-- Start -->
+        <div class="boardGrid" id="B1">
+          <div class="playerAvatar">
+            <img class="" id="p1" width="40px" src="assets/img/avatars/avatar.png" alt="" />
+            <img class="" id="p2" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+            <img class="hidden" id="p3" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+          </div>
+
+          <p>Let's Travel</p>
+          <img width="80px" src="assets/img/png/world.png" alt="" />
+          <p id="budgetLimit">
+            Every Travel <br />
+            Buget $200
+          </p>
+          <img width="23px" src="assets/img/png/arrow.png" alt="" />
+        </div>
+
+        <!-- tokyo -->
+        <div class="boardGrid cardDesign1" id="B2">
+          <p>Japan</p>
+          <p>Tokyo</p>
+          <img width="60px" src="assets/img/Japan/tokyo.png" alt="" />
+          <p>$200</p>
+        </div>
+
+        <!-- mystery card -->
+        <div class="boardGrid cardDesign1" id="B3">
+          <img width="60px" src="assets/img/Mystery Rest/mystery.png" alt="" />
+          <p class="mystery">Mystery Card</p>
+        </div>
+
+        <!-- osaka card -->
+        <div class="boardGrid cardDesign1" id="B4">
+          <p>Japan</p>
+          <p>Osaka</p>
+          <img width="60px" src="assets/img/Japan/osaka.png" alt="" />
+          <p>$200</p>
+        </div>
+
+        <!-- travel fee -->
+        <div class="boardGrid cardDesign3" id="B5">
           <p>
+            Travel
+            Fee
+          </p>
+          <p class="mystery">$100</p>
+        </div>
+
+        <!-- city tax -->
+        <div class="boardGrid cardDesign3" id="B6">
+          <p class="mystery">
+            City <br />
+            Tax
+          </p>
+          <p class="mystery">$100</p>
+        </div>
+
+        <!-- new york -->
+        <div class="boardGrid cardDesign1" id="B7">
+          <p>United State</p>
+          <p>New York</p>
+          <img width="60px" src="assets/img/United State/statue-of-liberty.png" alt="" />
+          <p>$100</p>
+        </div>
+
+        <!-- mystery card -->
+        <div class="boardGrid cardDesign1" id="B8">
+          <img width="60px" src="assets/img/Mystery Rest/mystery.png" alt="" />
+          <p class="mystery">Mystery Card</p>
+        </div>
+
+        <!-- san fra -->
+        <div class="boardGrid cardDesign1" id="B9">
+          <p>United State</p>
+          <p>San Fraciso</p>
+          <img width="60px" src="assets/img/United State/sanfra.png" alt="" />
+          <p>$100</p>
+        </div>
+
+        <!-- washing -->
+        <div class="boardGrid cardDesign1" id="B10">
+          <p>United State</p>
+          <p>Washington</p>
+          <img width="60px" src="assets/img/United State/washindc.png" alt="" />
+          <p>$120</p>
+        </div>
+
+        <!-- police station -->
+        <div class="boardGrid cardDesign1" id="B11">
+          <p></p>
+          <p class="mystery">Police Station</p>
+          <img width="60px" src="assets/img/Police/police station.png" alt="" />
+          <p class="mystery">One Turn Out</p>
+        </div>
+
+        <!-- london -->
+        <div class="boardGrid cardDesign2" id="B12">
+          <div class="rotate270deg">
+            <p>United Kingdom</p>
+            <p>London</p>
+            <img width="60px" src="assets/img/London/london.png" alt="" />
+            <p>$140</p>
+          </div>
+        </div>
+
+        <!-- museum -->
+        <div class="boardGrid cardDesign2 " id="B13">
+          <div class="rotate270deg">
+            <p>United Kingdom</p>
+            <p>Museum</p>
+            <img width="60px" src="assets/img/London/museum.png" alt="" />
+            <p>$140</p>
+          </div>
+        </div>
+
+        <!-- mystery card -->
+        <div class="boardGrid cardDesign2" id="B14">
+          <div class="rotate270deg">
+            <img width="60px" src="assets/img/Mystery Rest/mystery.png" alt="" />
+            <p class="mystery">
+              Mystery <br />
+              Card
+            </p>
+          </div>
+        </div>
+
+        <!-- tower -->
+        <div class="boardGrid cardDesign2" id="B15">
+          <div class="rotate270deg">
+            <p>United Kingdom</p>
+            <p>Tower</p>
+            <img width="60px" src="assets/img/London/tower.png" alt="" />
+            <p>$160</p>
+          </div>
+        </div>
+
+        <!-- City Tax -->
+        <div class="boardGrid cardDesign3" id="B16">
+          <div class="rotate270deg">
+            <p>
+             City Tax
+            </p>
+            <p>$100</p>
+          </div>
+        </div>
+
+        <!-- auaurium -->
+        <div class="boardGrid cardDesign2" id="B17">
+          <div class="rotate270deg">
+            <p>Dubai</p>
+            <p>Aqaurium</p>
+            <img width="60px" src="assets/img/Dubai/aqa.png" alt="" />
+            <p>$180</p>
+          </div>
+        </div>
+
+        <!-- ski dubai -->
+        <div class="boardGrid cardDesign2" id="B18">
+          <div class="rotate270deg">
+            <p>Dubai</p>
+            <p>Ski Dubai</p>
+            <img width="60px" src="assets/img/Dubai/ski.png" alt="" />
+            <p>$180</p>
+            <div class="playerAvatar">
+              <img class="hidden" id="p1" width="40px" src="assets/img/avatars/avatar.png" alt="" />
+              <img class="hidden" id="p2" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+              <img class="hidden" id="p3" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Resting Place -->
+        <div class="boardGrid cardDesign2" id="B19">
+          <div class="restingPlace">
+            <p>Resting Place</p>
+            <img width="60px" src="assets/img/Mystery Rest/rest.png" alt="" />
+          </div>
+        </div>
+
+
+        <!-- marina bay-->
+        <div class="boardGrid cardDesign1" id="B20">
+          <p>Singapore</p>
+          <p>Marina Bay</p>
+          <img width="60px" src="assets/img/Singapore/maribay.png" alt="" />
+          <p>$220</p>
+        </div>
+
+
+        <!-- mystery card -->
+        <div class="boardGrid cardDesign1" id="B21">
+          <img width="60px" src="assets/img/Mystery Rest/mystery.png" alt="" />
+          <p class="mystery">
+            Mystery <br />
+            Card
+          </p>
+
+        </div>
+
+
+        <!-- chinatown -->
+        <div class="boardGrid cardDesign1" id="B22">
+          <p>Singapore</p>
+          <p>Chinatown</p>
+          <img width="60px" src="assets/img/Singapore/chinatown.png" alt="" />
+          <p>$220</p>
+        </div>
+
+        <!-- universal -->
+        <div class="boardGrid cardDesign1" id="B23">
+          <p>Singapore</p>
+          <p>Universal</p>
+          <img width="60px" src="assets/img/Singapore/universal.png" alt="" />
+          <p>$240</p>
+        </div>
+
+        <!-- city tax -->
+        <div class="boardGrid cardDesign1" id="B24">
+          <p></p>
+          <p class="">
+            City Tax
+          </p>
+          <p class="mystery">$100</p>
+        </div>
+
+        <!-- jardin du -->
+        <div class="boardGrid cardDesign1" id="B25">
+          <p>France</p>
+          <p>Jardin Du</p>
+          <img width="60px" src="assets/img/paris/paris1.png" alt="" />
+          <p>$260</p>
+        </div>
+
+        <!-- plae dela -->
+        <div class="boardGrid cardDesign1" id="B26">
+          <p>France</p>
+          <p>Place dela</p>
+          <img width="60px" src="assets/img/paris/paris2.png" alt="" />
+          <p>$260</p>
+        </div>
+
+        <!-- travel fee -->
+        <div class="boardGrid cardDesign1" id="B27">
+          <p></p>
+          <p>
+            Travel <br />
+            Fee
+          </p>
+          <p class="mystery">$100</p>
+        </div>
+
+        <!-- eiffle tower -->
+        <div class="boardGrid cardDesign1" id="B28">
+          <p>France</p>
+          <p>Eiffle Tower</p>
+          <img width="60px" src="assets/img/paris/eiffle tower.png" alt="" />
+          <p>$280</p>
+        </div>
+
+        <!-- police man -->
+        <div class="boardGrid cardDesign2" id="B29">
+          <div class="policeMan">
+            <p>Polie Man</p>
+            <img width="60px" src="assets/img/police/police man.png" alt="" />
+          </div>
+        </div>
+
+        <!-- jeju do -->
+        <div class="boardGrid cardDesign2" id="B30">
+          <div class="rotate270degReverse">
+            <p>South Korea</p>
+            <p>Jeju Do</p>
+            <img width="60px" src="assets/img/Korea/jeju.png" alt="" />
+            <p>$300</p>
+          </div>
+        </div>
+
+        <!-- seoul -->
+        <div class="boardGrid cardDesign2" id="B31">
+          <div class="rotate270degReverse">
+            <p>South Korea</p>
+            <p>Seoul</p>
+            <img width="60px" src="assets/img/Korea/seoul.png" alt="" />
+            <p>$300</p>
+          </div>
+        </div>
+
+        <!-- food mall -->
+        <div class="boardGrid cardDesign2" id="B32">
+          <div class="rotate270degReverse">
+            <img width="60px" src="assets/img/png/food stall.png" alt="" />
+            <p class="mystery">
+              Food<br />
+              Mall
+            </p>
+          </div>
+        </div>
+
+        <!-- bulguka -->
+        <div class="boardGrid cardDesign2" id="B33">
+          <div class="rotate270degReverse">
+            <p>Sout Korea</p>
+            <p>Bulguka</p>
+            <img width="60px" src="assets/img/Korea/korea1.png" alt="" />
+            <p>$320</p>
+          </div>
+        </div>
+
+          <!-- train fee  -->
+        <div class="boardGrid cardDesign2" id="B34">
+          <div class="rotate270degReverse">
+            <p class="mystery">
+              Train <br />
+              Station
+            </p>
+            <p class="mystery">$100</p>
+          </div>
+        </div>
+
+        <!-- mystery card -->
+        <div class="boardGrid cardDesign2" id="B35">
+          <div class="rotate270degReverse">
             <img
-              id="line"
-              width="94.5px"
-              height="14.56px;"
-              src="assets/img/line.svg"
+              width="60px"
+              src="assets/img/Mystery Rest/mystery.png"
               alt=""
             />
-            Let's reminisce about our childhood days filled with joys and fun
-          </p>
-          <button class="slide-bottom" onclick="startNow()">START</button>
-          <img id="children" src="assets/img/children.svg" alt="" />
+            <p class="mystery">
+              Mystery <br />
+              Card
+            </p>
+          </div>
         </div>
-        <div class="imagePanel">
-          <img
-            class="slide-bottom"
-            width="90%"
-            src="assets/img/board.svg"
-            alt=""
-          />
+
+        <!-- pangodas -->
+        <div class="boardGrid cardDesign2" id="B36">
+          <div class="rotate270degReverse">
+            <p>Thailand</p>
+            <p>Pagodas</p>
+            <img width="60px" src="assets/img/Thailand/pagoda.png" alt="" />
+            <p>$350</p>
+          </div>
         </div>
+
+        <!-- shopping mall -->
+        <div class="boardGrid cardDesign2" id="B37"> 
+          <div class="rotate270degReverse">
+            <p>Thailand</p>
+            <p>Mall</p>
+            <img
+              width="60px"
+              src="assets/img/Thailand/shopping mall.png"
+              alt=""
+            />
+            <p>$400</p>
+          </div>
+        </div>
+
       </div>
 
-      <div class="loadingPage hidden">
-        <img
-          class="fade-in"
-          src="assets/img/monopoly logo.png"
-          width="30%"
-          alt=""
-        />
-        <div class="msgToPlayer">
-          <p class="fade-in" id="msg1">
-            Recongizne this logo <br />
-            That’s me Mr. Monopoly
-          </p>
-          <p id="msg2" class="fade-in hidden">
-            I promise I will bring you <br />
-            back to the old days
-          </p>
-          <p id="msg3" class="fade-in hidden">
-            Let’s get started
-            <br />
-            Remember dont forget to had fun
-          </p>
-        </div>
-        <img
-          class="rotate-90-cw"
-          width="2%"
-          src="assets/img/refresh.png"
-          alt=""
-        />
-      </div>
+      <!-- Player Section -->
+      <div class="playerSection">
 
-      <div class="playGround fade-in">
-        <div class="playerStatus draggable">
-          <div class="playerStatusBar">
+        <!-- Title -->
+        <div>
+          <img id="childrenStuff" src="assets/img/png/children stuffs.png" alt="" />
+          <h1>PLAYER </h1>
+        </div>
+        
+        <!-- Player Status -->
+        <div class="playerStatus">
+
+          <!-- For Avatar 1 -->
+          <div class="playerStatusBar avatar1">
+            <img width="80px" src="assets/img/avatars/avatar2.png" alt="" />
+            <img src="assets/img/svg/avatar1Icon.svg" alt="">
+            <div class="playerInfo">
+              <p class="playerName">James</p>
+              <h1 class="playerMoney" id="p1Monery">$1500</h1>
+            </div>
+          </div>   
+          
+          <div class="propertiesCards">
+            <div class="property">
+                <h2>Properties</h2>
+                <div class="gridForProperty">
+                  <p>- Tokyo</p>
+                  <p>- Tokyo</p>
+                  <p>- Tokyo</p>
+                </div>
+            </div>
+            <div class="cards">
+              <h2>Cards</h2>
+              <div class="gridForProperty">
+                <p>- Tokyo</p>
+                <p>- Tokyo</p>
+                <p>- Tokyo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- For Avatar 2 -->
+        <div class="playerStatus">
+          <div class="playerStatusBar avatar2">
             <img width="80px" src="assets/img/avatars/avatar.png" alt="" />
+            <img src="assets/img/svg/avatar2Icon.svg" alt="">
             <div class="playerInfo">
               <p class="playerName">Logan</p>
               <h1 class="playerMoney" id="p1Monery">$1500</h1>
             </div>
           </div>
-          <div class="showPlayerProperties">
-            <div class="dummy"></div>
-            <div class="propertyName">
-              <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
-            </div>
-          </div>
 
-          <div class="playerStatusBar">
-            <img width="80px" src="assets/img/avatars/avatar2.png" alt="" />
-            <div class="playerInfo">
-              <p class="playerName" id="playerTwoName">Jame</p>
-              <h1 class="playerMoney" id="p1Monery">$1500</h1>
+          <div class="propertiesCards">
+            <div class="property">
+                <h2>Properties</h2>
+                <div class="gridForProperty">
+                  <p>- Tokyo</p>
+                  <p>- Tokyo</p>
+                  <p>- Tokyo</p>
+                </div>
             </div>
-          </div>
-          <div class="showPlayerProperties">
-            <div class="dummy"></div>
-            <div class="propertyName">
-              <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
-              <h3>- Tokyo</h3>
+            <div class="cards">
+              <h2>Cards</h2>
+              <div class="gridForProperty">
+                <p>- Tokyo</p>
+                <p>- Tokyo</p>
+                <p>- Tokyo</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="theBoard">
-          <!-- Start -->
-          <div class="boardGrid" id="B1">
-            <p>Let's Travel</p>
-            <img width="80px" src="assets/img/png/world.png" alt="" />
-            <p id="budgetLimit">
-              Every Travel <br />
-              Buget $200
-            </p>
-            <img width="23px" src="assets/img/png/arrow.png" alt="" />
-            <div class="playerAvatar">
-              <img
-                class="hidden"
-                id="p1"
-                width="40px"
-                src="assets/img/avatars/avatar.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p2"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p3"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-            </div>
-          </div>
-
-          <!-- tokyo -->
-          <div class="boardGrid cardDesign1" id="B2">
-            <p>Japan</p>
-            <p>Tokyo</p>
-            <img width="60px" src="assets/img/Japan/tokyo.png" alt="" />
-            <p>$200</p>
-          </div>
-
-          <!-- mystery card -->
-          <div class="boardGrid cardDesign1" id="B3">
-            <img
-              width="60px"
-              src="assets/img/Mystery Rest/mystery.png"
-              alt=""
-            />
-            <p class="mystery">Mystery Card</p>
-            <div class="playerAvatar">
-              <img
-                class="hidden"
-                id="p1"
-                width="40px"
-                src="assets/img/avatars/avatar.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p2"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p3"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-            </div>
-          </div>
-
-          <!-- osaka card -->
-          <div class="boardGrid cardDesign1" id="B4">
-            <p>Japan</p>
-            <p>Osaka</p>
-            <img width="60px" src="assets/img/Japan/osaka.png" alt="" />
-            <p>$200</p>
-            <div class="playerAvatar">
-              <img
-                class="hidden"
-                id="p1"
-                width="40px"
-                src="assets/img/avatars/avatar.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p2"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p3"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-            </div>
-          </div>
-
-          <!-- travel fee -->
-          <div class="boardGrid cardDesign2" id="B5">
-            <p class="mystery">
-              Travel <br />
-              Fee
-            </p>
-            <p class="mystery">$100</p>
-          </div>
-
-          <!-- train station -->
-          <div class="boardGrid cardDesign2" id="B6">
-            <p class="mystery">
-              Train <br />
-              Station
-            </p>
-            <p class="mystery">$100</p>
-          </div>
-
-          <!-- new york -->
-          <div class="boardGrid cardDesign1" id="B7">
-            <p>United State</p>
-            <p>New York</p>
-            <img
-              width="60px"
-              src="assets/img/United State/statue-of-liberty.png"
-              alt=""
-            />
-            <p>$100</p>
-          </div>
-
-          <!-- mystery card -->
-          <div class="boardGrid cardDesign1" id="B8">
-            <img width="60px" src="assets/img/mystery.png" alt="" />
-            <p class="mystery">Mystery Card</p>
-          </div>
-
-          <!-- san fra -->
-          <div class="boardGrid cardDesign1" id="B9">
-            <p>United State</p>
-            <p>San Fraciso</p>
-            <img width="60px" src="assets/img/United State/sanfra.png" alt="" />
-            <p>$100</p>
-          </div>
-
-          <!-- washing -->
-          <div class="boardGrid cardDesign1" id="B10">
-            <p>United State</p>
-            <p>Washington</p>
-            <img
-              width="60px"
-              src="assets/img/United State/washindc.png"
-              alt=""
-            />
-            <p>$120</p>
-            <div class="playerAvatar">
-              <img
-                class="hidden"
-                id="p1"
-                width="40px"
-                src="assets/img/avatars/avatar.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p2"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p3"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-            </div>
-          </div>
-
-          <!-- police station -->
-          <div class="boardGrid cardDesign1" id="B11">
-            <p></p>
-            <p class="mystery">Police Station</p>
-            <img
-              width="60px"
-              src="assets/img/Police/police station.png"
-              alt=""
-            />
-            <p class="mystery">One Turn Out</p>
-          </div>
-
-          <!-- london -->
-          <div class="boardGrid cardDesign1" id="B12">
-            <div class="rotateCard">
-              <p>United Kingdom</p>
-              <p>London</p>
-              <img width="60px" src="assets/img/London/london.png" alt="" />
-              <p>$140</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- museum -->
-          <div class="boardGrid cardDesign1" id="B13">
-            <div class="rotateCard">
-              <p>United Kingdom</p>
-              <p>Museum</p>
-              <img width="60px" src="assets/img/London/museum.png" alt="" />
-              <p>$140</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- mystery card -->
-          <div class="boardGrid cardDesign1" id="B14">
-            <div class="rotateCard3">
-              <img
-                width="60px"
-                src="assets/img/Mystery Rest/mystery.png"
-                alt=""
-              />
-              <p class="mystery">
-                Mystery <br />
-                Card
-              </p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- tower -->
-          <div class="boardGrid cardDesign1" id="B15">
-            <div class="rotateCard">
-              <p>United Kingdom</p>
-              <p>Tower</p>
-              <img width="60px" src="assets/img/London/tower.png" alt="" />
-              <p>$160</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- train fee -->
-          <div class="boardGrid cardDesign2" id="B16">
-            <div class="rotateCard4">
-              <p class="mystery">
-                Train <br />
-                Station
-              </p>
-              <p class="mystery">$100</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- auaurium -->
-          <div class="boardGrid cardDesign1" id="B17">
-            <div class="rotateCard">
-              <p>Dubai</p>
-              <p>Aqaurium</p>
-              <img width="60px" src="assets/img/Dubai/aqa.png" alt="" />
-              <p>$180</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- ski dubai -->
-          <div class="boardGrid cardDesign1" id="B18">
-            <div class="rotateCard">
-              <p>Dubai</p>
-              <p>Ski Dubai</p>
-              <img width="60px" src="assets/img/Dubai/ski.png" alt="" />
-              <p>$180</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- food mall -->
-          <div class="boardGrid cardDesign2" id="B19">
-            <div class="rotateCard3">
-              <img width="60px" src="assets/img/png/food stall.png" alt="" />
-              <p class="mystery">
-                Food<br />
-                Mall
-              </p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- barji Ai -->
-          <div class="boardGrid cardDesign1" id="B20">
-            <div class="rotateCard">
-              <p>Dubai</p>
-              <p>Barj Ai</p>
-              <img width="60px" src="assets/img/Dubai/bar.png" alt="" />
-              <p>$200</p>
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- resting place -->
-          <div class="boardGrid cardDesign3" id="B21">
-            <div>
-              <p>Resting Place</p>
-              <img width="60px" src="assets/img/Mystery Rest/rest.png" alt="" />
-              <div class="playerAvatar">
-                <img
-                  class="hidden"
-                  id="p1"
-                  width="40px"
-                  src="assets/img/avatars/avatar.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p2"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-                <img
-                  class="hidden"
-                  id="p3"
-                  width="40px"
-                  src="assets/img/avatars/avatar2.png"
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- marina bay-->
-          <div class="boardGrid cardDesign1" id="B22">
-            <p>Singapore</p>
-            <p>Marina Bay</p>
-            <img width="60px" src="assets/img/Singapore/maribay.png" alt="" />
-            <p>$220</p>
-            <div class="playerAvatar">
-              <img
-                class="hidden"
-                id="p1"
-                width="40px"
-                src="assets/img/avatars/avatar.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p2"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-              <img
-                class="hidden"
-                id="p3"
-                width="40px"
-                src="assets/img/avatars/avatar2.png"
-                alt=""
-              />
-            </div>
-          </div>
-
-          <!-- mystery card -->
-          <div class="boardGrid cardDesign1" id="B23">
-            <img
-              width="60px"
-              src="assets/img/Mystery Rest/mystery.png"
-              alt=""
-            />
-            <p class="mystery">Mystery Card</p>
-          </div>
-
-          <!-- chinatown -->
-          <div class="boardGrid cardDesign1" id="B24">
-            <p>Singapore</p>
-            <p>Chinatown</p>
-            <img width="60px" src="assets/img/Singapore/chinatown.png" alt="" />
-            <p>$220</p>
-          </div>
-
-          <!-- universal -->
-          <div class="boardGrid cardDesign1" id="B25">
-            <p>Singapore</p>
-            <p>Universal</p>
-            <img width="60px" src="assets/img/Singapore/universal.png" alt="" />
-            <p>$240</p>
-          </div>
-
-          <!-- train fee -->
-          <div class="boardGrid cardDesign2" id="B26">
-            <p class="mystery">
-              Train <br />
-              Station
-            </p>
-            <p class="mystery">$100</p>
-          </div>
-
-          <!-- jardin du -->
-          <div class="boardGrid cardDesign1" id="B27">
-            <p>France</p>
-            <p>Jardin Du</p>
-            <img width="60px" src="assets/img/paris/paris1.png" alt="" />
-            <p>$260</p>
-          </div>
-
-          <!-- plae dela -->
-          <div class="boardGrid cardDesign1" id="B28">
-            <p>France</p>
-            <p>Place dela</p>
-            <img width="60px" src="assets/img/paris/paris2.png" alt="" />
-            <p>$260</p>
-          </div>
-
-          <!-- travel fee -->
-          <div class="boardGrid cardDesign2" id="B29">
-            <p class="mystery">
-              Travel <br />
-              Fee
-            </p>
-            <p class="mystery">$100</p>
-          </div>
-
-          <!-- eiffle tower -->
-          <div class="boardGrid cardDesign1" id="B30">
-            <p>France</p>
-            <p>Eiffle Tower</p>
-            <img width="60px" src="assets/img/paris/eiffle tower.png" alt="" />
-            <p>$280</p>
-          </div>
-
-          <!-- police man -->
-          <div class="boardGrid cardDesign4" id="B31">
-            <div class="">
-              <p>Polie Man</p>
-              <img width="60px" src="assets/img/police/police man.png" alt="" />
-            </div>
-          </div>
-
-          <!-- jeju do -->
-          <div class="boardGrid cardDesign1" id="B32">
-            <div class="rotateCard2">
-              <p>South Korea</p>
-              <p>Jeju Do</p>
-              <img width="60px" src="assets/img/Korea/jeju.png" alt="" />
-              <p>$300</p>
-            </div>
-          </div>
-
-          <!-- seoul -->
-          <div class="boardGrid cardDesign1" id="B33">
-            <div class="rotateCard2">
-              <p>South Korea</p>
-              <p>Seoul</p>
-              <img width="60px" src="assets/img/Korea/seoul.png" alt="" />
-              <p>$300</p>
-            </div>
-          </div>
-
-          <!-- food mall -->
-          <div class="boardGrid cardDesign2" id="B34">
-            <div class="rotateCard5">
-              <img width="60px" src="assets/img/png/food stall.png" alt="" />
-              <p class="mystery">
-                Food<br />
-                Mall
-              </p>
-            </div>
-          </div>
-
-          <!-- bulguka -->
-          <div class="boardGrid cardDesign1" id="B35">
-            <div class="rotateCard2">
-              <p>Sout Korea</p>
-              <p>Bulguka</p>
-              <img width="60px" src="assets/img/Korea/korea1.png" alt="" />
-              <p>$320</p>
-            </div>
-          </div>
-
-          <!-- train fee  -->
-          <div class="boardGrid cardDesign2" id="B36">
-            <div class="rotateCard5">
-              <p class="mystery">
-                Train <br />
-                Station
-              </p>
-              <p class="mystery">$100</p>
-            </div>
-          </div>
-
-          <!-- mystery card -->
-          <div class="boardGrid cardDesign2" id="B37">
-            <div class="rotateCard5">
-              <img
-                width="60px"
-                src="assets/img/Mystery Rest/mystery.png"
-                alt=""
-              />
-              <p class="mystery">
-                Mystery <br />
-                Card
-              </p>
-            </div>
-          </div>
-
-          <!-- pangodas -->
-          <div class="boardGrid cardDesign1" id="B38">
-            <div class="rotateCard2">
-              <p>Thailand</p>
-              <p>Pagodas</p>
-              <img width="60px" src="assets/img/Thailand/pagoda.png" alt="" />
-              <p>$350</p>
-            </div>
-          </div>
-
-          <!-- travel fees -->
-          <div class="boardGrid cardDesign2" id="B39">
-            <div class="rotateCard2">
-              <p class="mystery">
-                Travel <br />
-                Fee
-              </p>
-              <p class="mystery">$100</p>
-            </div>
-          </div>
-
-          <!-- shopping mall -->
-          <div class="boardGrid cardDesign1" id="B40">
-            <div class="rotateCard2">
-              <p>Thailand</p>
-              <p>Mall</p>
-              <img
-                width="60px"
-                src="assets/img/Thailand/shopping mall.png"
-                alt=""
-              />
-              <p>$400</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="boardCenter">
-          <h1>MONOPOLY</h1>
+        
+        <!-- Dice Button -->
+        <div class="rollTheDice">
+            <button>ROLL  THE DICE</button>
         </div>
       </div>
     </div>
@@ -878,6 +520,9 @@
       </div>
     </div>
 
+    <script src="scripts/style.js"></script>
+    <script src="scripts/script.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script>
       const position = { x: 0, y: 0 };
@@ -896,6 +541,6 @@
         },
       });
     </script>
-    <script src="scripts/style.js"></script>
-  </body>
+</body>
+
 </html>
