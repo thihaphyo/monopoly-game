@@ -11,118 +11,118 @@ const rule = {
 
 let tiles = [
     new Tiles(
-        1,"Monopoly Pass", new TileType("budgetLimit", rule.budgetLimit), 200
+        1,"Monopoly Pass", new TileType("budgetLimit", rule.budgetLimit), 200, null , null
     ),
     new Tiles(
-        2,"Tokyo", new TileType("property", rule.property), 200
+        2,"Tokyo", new TileType("property", rule.property), 200, null, "assets/img/Japan/tokyo.png"
     ),
     new Tiles(
-        3,"MysteryCard", new TileType("mystery", rule.mystery), null
+        3,"MysteryCard", new TileType("mystery", rule.mystery), null , null , null
     ),
     new Tiles(
-        4,"Oasaka", new TileType("property", rule.property), 200
+        4,"Oasaka", new TileType("property", rule.property), 200, null, "assets/img/Japan/osaka.png"
     ),
     new Tiles(
-        5,"City Tax", new TileType("tax", rule.tax), 100
+        5,"City Tax", new TileType("tax", rule.tax), 100,null, null
     ),
     new Tiles(
-        6,"Toll Gate", new TileType("tax", rule.tax), 100
+        6,"Toll Gate", new TileType("tax", rule.tax), 100,null, null
     ),
     new Tiles(
-        7,"New York", new TileType("property", rule.property), 100
+        7,"New York", new TileType("property", rule.property), 100, null, "assets/img/United State/statue-of-liberty.png"
     ),
     new Tiles(
-        8,"MysteryCard", new TileType("mystery", rule.mystery), null
+        8,"MysteryCard", new TileType("mystery", rule.mystery),null, null , null
     ),
     new Tiles(
-        9,"San Fraciso", new TileType("property", rule.property), 100
+        9,"San Fraciso", new TileType("property", rule.property), 100 , null, "assets/img/United State/sanfra.png"
     ),
     new Tiles(
-        10,"Washington", new TileType("property", rule.property), 100
+        10,"Washington", new TileType("property", rule.property), 100, null, "assets/img/United State/washindc.png"
     ),
     new Tiles(
-        11,"Police Station", new TileType("jail", rule.jail), null
+        11,"Police Station", new TileType("jail", rule.jail), null , null ,null
     ),
     new Tiles(
-        12,"London", new TileType("property", rule.property), 140
+        12,"London", new TileType("property", rule.property), 140 , null, "assets/img/London/london.png"
     ),
     new Tiles(
-        13,"Museum", new TileType("property", rule.property), 140
+        13,"Museum", new TileType("property", rule.property), 140 , null, "assets/img/London/museum.png" 
     ),
     new Tiles(
-        14,"MysteryCard", new TileType("mystery", rule.mystery), null
+        14,"MysteryCard", new TileType("mystery", rule.mystery), null, null, null
     ),
     new Tiles(
-        15,"Tower", new TileType("property", rule.property), 140
+        15,"Tower", new TileType("property", rule.property), 140 , null, "assets/img/London/tower.png"
     ),
     new Tiles(
-        16,"Toll Gate", new TileType("tax", rule.tax), 100
+        16,"Toll Gate", new TileType("tax", rule.tax), 100 ,null, null
     ),
     new Tiles(
-        17,"Aqaurium", new TileType("property", rule.property), 180
+        17,"Aqaurium", new TileType("property", rule.property), 180 ,null, "assets/img/Dubai/aqa.png"
     ),
     new Tiles(
-        18,"Ski Dubai", new TileType("property", rule.property), 180
+        18,"Ski Dubai", new TileType("property", rule.property), 180 ,null, "assets/img/Dubai/ski.png"
     ),
     new Tiles(
-        19,"Rest", new TileType("free", rule.free), 0
+        19,"Rest", new TileType("free", rule.free), 0 , null,null
     ),
     new Tiles(
-        20,"Marina Bay", new TileType("property", rule.property), 220
+        20,"Marina Bay", new TileType("property", rule.property), 220 , null, "assets/img/Singapore/maribay.png"
     ),
     new Tiles(
-        21,"MysteryCard", new TileType("mystery", rule.mystery), null
+        21,"MysteryCard", new TileType("mystery", rule.mystery), null ,null, null
     ),
     new Tiles(
-        22,"Chinatown", new TileType("property", rule.property), 220
+        22,"Chinatown", new TileType("property", rule.property), 220 ,null, "assets/img/Singapore/chinatown.png"
     ),
     new Tiles(
-        23,"Universal", new TileType("property", rule.property), 240
+        23,"Universal", new TileType("property", rule.property), 240,null, "assets/img/Singapore/universal.png"
     ),
     new Tiles(
-        24,"Toll Gate", new TileType("tax", rule.tax), 100
+        24,"Toll Gate", new TileType("tax", rule.tax), 100 , null,null
     ),
     new Tiles(
-        25,"Jardin Du", new TileType("property", rule.property), 260
+        25,"Jardin Du", new TileType("property", rule.property), 260 ,null, "assets/img/paris/paris1.png"
     ),
     new Tiles(
-        26,"Place dela", new TileType("property", rule.property), 260
+        26,"Place dela", new TileType("property", rule.property), 260 ,null, "assets/img/paris/paris2.png"
     ),
     new Tiles(
-        29,"City Tax", new TileType("tax", rule.tax), 100
+        29,"City Tax", new TileType("tax", rule.tax), 100 , null,null
     ),
     new Tiles(
-        27,"Eiffle Tower", new TileType("property", rule.property), 280
+        27,"Eiffle Tower", new TileType("property", rule.property), 280 , null, "assets/img/paris/eiffle tower.png"
     ),
     new Tiles(
-        28,"Police", new TileType("police", rule.police), 300
+        28,"Police", new TileType("police", rule.police), 300 , null, null
     ),
     new Tiles(
-        29,"Jeju Do", new TileType("property", rule.property), 300
+        29,"Jeju Do", new TileType("property", rule.property), 300, null, "assets/img/Korea/jeju.png"
     ),
     new Tiles(
-        30,"Seoul", new TileType("property", rule.property), 300
+        30,"Seoul", new TileType("property", rule.property), 300, null, "assets/img/Korea/seoul.png"
     ),
     new Tiles(
-        31,"Food Mall", new TileType("free", rule.free), 0
+        31,"Food Mall", new TileType("free", rule.free), 0 , null, null
     ),
     new Tiles(
-        32,"Bulguka", new TileType("property", rule.property), 320
+        32,"Bulguka", new TileType("property", rule.property), 320 , null, "assets/img/Korea/korea1.png"
     ),
     new Tiles(
-        33,"Toll Gate", new TileType("tax", rule.tax), 100
+        33,"Toll Gate", new TileType("tax", rule.tax), 100 , null , null
     ),
     new Tiles(
-        34,"MysteryCard", new TileType("mystery", rule.mystery), null
+        34,"MysteryCard", new TileType("mystery", rule.mystery), null , null , null
     ),
     new Tiles(
-        35,"Pagodas", new TileType("property", rule.property), 350
+        35,"Pagodas", new TileType("property", rule.property), 350 , null, "assets/img/Thailand/pagoda.png"
     ),
     new Tiles(
-        36,"Mall", new TileType("property", rule.property), 400
+        36,"Mall", new TileType("property", rule.property), 400 , null, "assets/img/Thailand/shopping mall.png"
     ),
     new Tiles(
-        37,"Monopoly Pass", new TileType("budgetLimit", rule.budgetLimit), 200
+        37,"Monopoly Pass", new TileType("budgetLimit", rule.budgetLimit), 200 ,null ,null
     )
 ];
 
@@ -204,12 +204,13 @@ Player.prototype.deduct = function(amt) {
     this.amount-=amt;
 }
 
-function Tiles(tileID, tileName, tileType, tileAmount, ownedBy = null) {
+function Tiles(tileID, tileName, tileType, tileAmount, ownedBy = null, image) {
     this.tileID = tileID;
     this.tileName = tileName;
     this.tileType = tileType;
     this.tileAmount = tileAmount;
     this.ownedBy =  ownedBy;
+    this.image = image;
 }
 
 Tiles.prototype.isOwnedByPlayer = function(player) {

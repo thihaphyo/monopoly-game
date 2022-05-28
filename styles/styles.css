@@ -338,7 +338,7 @@ button {
   /* background-color: blue; */
 
 }
-.mysteryCardsPanel, .winnerCards, .propertyBuy{
+.mysteryCardsPanel, .winnerCards{
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -431,7 +431,7 @@ button {
   padding: 10px;
   border-radius: 10px;
 }
-button:after {
+/* button:after {
   content: "";
   display: block;
   position: absolute  ;
@@ -443,7 +443,7 @@ button:after {
   opacity: 0;
   transition: all 0.5s;
   box-shadow: 0 0 10px 40px rgb(201, 199, 199);
-}
+} */
 
 button:active:after {
   box-shadow: 0 0 0 0 rgb(201, 199, 199);

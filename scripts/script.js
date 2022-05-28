@@ -50,7 +50,7 @@ const movePlayer = () => {
   // move & Game logic
   let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
   if (!p.isInJail) {
-    for (let index = 0; index < currentRoll; index++) {
+    for (let index = 0; index < 1; index++) {
       if (currentPlayer.currentPosition == 11) {
         let pos =
           Number(
@@ -177,38 +177,22 @@ const movePlayer = () => {
     if (isGameOver) {
       return;
     }
-    // setInterval(() => {
-    //   if (isPlayerDecided) {
-    //     document
-    //       .getElementById("diceContainer")
-    //       .setAttribute("class", "diceContainer hidden");
-    //     if (currentPlayer.playeName == player1.playeName) {
-    //       p1.currentPosition = currentPlayer.currentPosition;
-    //       currentPlayer = player2;
-    //     } else {
-    //       p2.currentPosition = currentPlayer.currentPosition;
-    //       currentPlayer = player1;
-    //     }
-    //     currentRoll = 0;
-    //     $("#btnRollDice").prop("disabled", false);
-    //     readyPlayers();
-    //     isPlayerDecided = false;
-    //   }
-    // }, 1000);
     document
-      .getElementById("diceContainer")
-      .setAttribute("class", "diceContainer hidden");
-    if (currentPlayer.playeName == player1.playeName) {
-      p1.currentPosition = currentPlayer.currentPosition;
-      currentPlayer = player2;
-    } else {
-      p2.currentPosition = currentPlayer.currentPosition;
-      currentPlayer = player1;
-    }
-    currentRoll = 0;
-    $("#btnRollDice").prop("disabled", false);
-    readyPlayers();
-    isPlayerDecided = false;
+          .getElementById("diceContainer")
+          .setAttribute("class", "diceContainer hidden");
+        if (currentPlayer.playeName == player1.playeName) {
+          p1.currentPosition = currentPlayer.currentPosition;
+          currentPlayer = player2;
+        } else {
+          p2.currentPosition = currentPlayer.currentPosition;
+          currentPlayer = player1;
+        }
+        currentRoll = 0;
+        $("#btnRollDice").prop("disabled", false);
+        setTimeout(() => {
+            $("#diceResult").html("");
+        },1000)
+        readyPlayers();
   }, 1000);
 
   checkGameStatus();
@@ -246,7 +230,7 @@ const gameLogic = () => {
     } else if (tile.tileType.rule == rule.mystery) {
       console.log("aaadsddsm");
       player1.landOnMysteryCard(onSuccessMystery);
-    }
+    } 
   } else {
     let tile = player2.getLandingTile();
     if (tile.tileType.rule == rule.budgetLimit) {
@@ -283,27 +267,27 @@ function onSuccessPassTravelBudget() {
 }
 
 function onPromptUserToBuy(tile) {
-  //ai
-  if (currentPlayer.playeName == player2.playeName) {
-    if (currentPlayer.amount > tile.tileAmount + 50) {
-      player2.buyProperty(tile, onSuccessBuy);
-    } else {
-      console.log("Player Skipped");
+ 
+    //ai
+    if(currentPlayer.playeName == player2.playeName) {
+        if (currentPlayer.amount > (tile.tileAmount + 50 ) ) {
+            player2.buyProperty(tile, onSuccessBuy);
+        } else {
+            console.log('Player Skipped');
+        }
+    } else{
+        if (confirm("Buy " + tile.tileName + "?")) {
+            if(currentPlayer.playeName == player1.playeName) {
+                player1.buyProperty(tile, onSuccessBuy);
+            } else {
+                player2.buyProperty(tile, onSuccessBuy);
+            }
+          } else {
+              console.log('Player Skipped');
+        }
     }
-  } else {
-    showPropertyBuyPrompt(tile, onConfirmBuyProperty, onSkipBuy);
-    // if (confirm("Buy " + tile.tileName + "?")) {
-    //     if(currentPlayer.playeName == player1.playeName) {
-    //         player1.buyProperty(tile, onSuccessBuy);
-    //     } else {
-    //         player2.buyProperty(tile, onSuccessBuy);
-    //     }
-    //   } else {
-    //       console.log('Player Skipped');
-    // }
-  }
-  //   isPlayerDecided = false;
-  //   showPropertyBuyPrompt(tile, onConfirmBuyProperty, onSkipBuy);
+    // isPlayerDecided = false;  
+    // showPropertyBuyPrompt(tile, onConfirmBuyProperty, onSkipBuy);
 }
 
 function onConfirmBuyProperty(prop) {
@@ -315,7 +299,6 @@ function onConfirmBuyProperty(prop) {
   document
     .getElementById("propertyBuyPrompt")
     .setAttribute("class", "propertyBuy hidden");
-  // isPlayerDecided = true;
 }
 
 function onSkipBuy() {
@@ -323,17 +306,14 @@ function onSkipBuy() {
   document
     .getElementById("propertyBuyPrompt")
     .setAttribute("class", "propertyBuy hidden");
-  //isPlayerDecided = true;
 }
 
 function onFailMoneyProcess() {
   window.alert(currentPlayer.playeName + " do not have enough money");
-  //isPlayerDecided = true;
 }
 
 function onPayGovTax(amt) {
   window.alert(currentPlayer.playeName + " has to pay " + amt + " as Tax.");
-  //isPlayerDecided = true;
 }
 
 function onPayTaxDuetoOtherPlayerProps(tax) {
@@ -348,10 +328,13 @@ function onPayTaxDuetoOtherPlayerProps(tax) {
   } else {
     player2.collectTax(tax);
   }
-  //isPlayerDecided = true;
+//   isPlayerDecided = true;
 }
 
 function onSuccessBuy(amt) {
+//   if (currentPlayer.playeName == player2.playeName) {
+//     window.alert(currentPlayer.playeName + " bought property that worth " + amt);
+//   }  
   window.alert(currentPlayer.playeName + " bought property that worth " + amt);
   //isPlayerDecided = true;
 }
@@ -364,15 +347,16 @@ function onSuccessMystery(random, plusOrMinus) {
       "$" +
       random
   );
+ // isPlayerDecided = true;
 }
 
 function showPropertyBuyPrompt(property, onConfirm, onCancel) {
   $("#amount").html("$" + property.tileAmount);
   $("#property_name").html("$" + property.tileName);
+  $("#propertyAsset").attr("src", property.image);
 
   $("#buy").click(function () {
-    console.log("here");
-    onConfirm(tile);
+    onConfirm(property);
   });
 
   $("#cancel").click(function () {

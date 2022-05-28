@@ -508,7 +508,7 @@
 
     <div id="propertyBuyPrompt" class="propertyBuy hidden">
       <div>
-        <img width="70%" src="assets/img/Japan/tokyo.png" alt="" />
+        <img id="propertyAsset" width="70%" src="assets/img/Japan/tokyo.png" alt="" />
         <h1 id="amount">$100</h1>
         <p id="property_name">Tokyo</p>
         <button id="buy">BUY</button>
@@ -536,23 +536,23 @@
     <script src="scripts/Objects.js"></script>
     <script src="scripts/script.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script> -->
     <script>
-      const position = { x: 0, y: 0 };
+      // const position = { x: 0, y: 0 };
 
-      interact(".draggable").draggable({
-        listeners: {
-          start(event) {
-            console.log(event.type, event.target);
-          },
-          move(event) {
-            position.x += event.dx;
-            position.y += event.dy;
+      // interact(".draggable").draggable({
+      //   listeners: {
+      //     start(event) {
+      //       console.log(event.type, event.target);
+      //     },
+      //     move(event) {
+      //       position.x += event.dx;
+      //       position.y += event.dy;
 
-            event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
-          },
-        },
-      });
+      //       event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
+      //     },
+      //   },
+      // });
     </script>
 </body>
 
