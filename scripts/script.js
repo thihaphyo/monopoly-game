@@ -26,10 +26,10 @@ const readyPlayers = () => {
     playersMoveOut = true;
   }
   console.log(log);
-  // if (currentPlayer.playeName == player2.playeName) {
-  //     //ai
-  //     rollDice();
-  // }
+  if (currentPlayer.playeName == player2.playeName) {
+      //ai
+      rollDice();
+  }
 };
 
 const rollDice = () => {
