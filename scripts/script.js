@@ -6,6 +6,9 @@ let log = [];
 let playersMoveOut = false;
 let isGameOver = false;
 let isPlayerDecided = false;
+let globalProp;
+const { ReplaySubject } = rxjs;
+const sub = new ReplaySubject();
 
 const readyPlayers = () => {
   [player1, player2].forEach((v, i) => {
@@ -26,10 +29,10 @@ const readyPlayers = () => {
     playersMoveOut = true;
   }
   console.log(log);
-  if (currentPlayer.playeName == player2.playeName) {
-      //ai
-      rollDice();
-  }
+//   if (currentPlayer.playeName == player2.playeName) {
+//       //ai
+//       rollDice();
+//   }
 };
 
 const rollDice = () => {
@@ -50,7 +53,7 @@ const movePlayer = () => {
   // move & Game logic
   let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
   if (!p.isInJail) {
-    for (let index = 0; index < currentRoll; index++) {
+    for (let index = 0; index < 1; index++) {
       if (currentPlayer.currentPosition == 11) {
         let pos =
           Number(
@@ -173,36 +176,64 @@ const movePlayer = () => {
     );
   }
 
-  setTimeout(() => {
-    if (isGameOver) {
-      return;
-    }
-    document
-          .getElementById("diceContainer")
-          .setAttribute("class", "diceContainer hidden");
-        if (currentPlayer.playeName == player1.playeName) {
-          p1.currentPosition = currentPlayer.currentPosition;
-          currentPlayer = player2;
-        } else {
-          p2.currentPosition = currentPlayer.currentPosition;
-          currentPlayer = player1;
-        }
-        currentRoll = 0;
-        $("#btnRollDice").prop("disabled", false);
-        setTimeout(() => {
-            $("#diceResult").html("");
-        },1000)
-        readyPlayers();
-  }, 1000);
+//   setTimeout(() => {
+//     if (isGameOver) {
+//       return;
+//     }
+//     document
+//           .getElementById("diceContainer")
+//           .setAttribute("class", "diceContainer hidden");
+//         if (currentPlayer.playeName == player1.playeName) {
+//           p1.currentPosition = currentPlayer.currentPosition;
+//           currentPlayer = player2;
+//         } else {
+//           p2.currentPosition = currentPlayer.currentPosition;
+//           currentPlayer = player1;
+//         }
+//         currentRoll = 0;
+//         $("#btnRollDice").prop("disabled", false);
+//         setTimeout(() => {
+//             $("#diceResult").html("");
+//         },1000)
+//         readyPlayers();
+//   }, 1000);
 
   checkGameStatus();
 };
 
 $(document).ready(function () {
   readyPlayers();
+  sub.subscribe({
+    next: (v) =>  { 
+        if (v) {
+            setTimeout(() => {
+                if (isGameOver) {
+                  return;
+                }
+                document
+                      .getElementById("diceContainer")
+                      .setAttribute("class", "diceContainer hidden");
+                    if (currentPlayer.playeName == player1.playeName) {
+                      p1.currentPosition = currentPlayer.currentPosition;
+                      currentPlayer = player2;
+                    } else {
+                      p2.currentPosition = currentPlayer.currentPosition;
+                      currentPlayer = player1;
+                    }
+                    currentRoll = 0;
+                    $("#btnRollDice").prop("disabled", false);
+                    setTimeout(() => {
+                        $("#diceResult").html("");
+                    },1000)
+                    readyPlayers();
+              }, 1000);
+        }
+    },
+  });
 });
 
 $("#btnRollDice").click(function () {
+  document.getElementById('dice_roll').play();  
   rollDice();
 });
 
@@ -229,7 +260,9 @@ const gameLogic = () => {
       player1.payGovTaxes(tile, onPayGovTax);
     } else if (tile.tileType.rule == rule.mystery) {
       player1.landOnMysteryCard(onSuccessMystery);
-    } 
+    }  else {
+        sub.next(true);
+    }
   } else {
     let tile = player2.getLandingTile();
     if (tile.tileType.rule == rule.budgetLimit) {
@@ -248,6 +281,8 @@ const gameLogic = () => {
       player2.payGovTaxes(tile, onPayGovTax);
     } else if (tile.tileType.rule == rule.mystery) {
       player2.landOnMysteryCard(onSuccessMystery);
+    } else {
+        sub.next(true);
     }
   }
 };
@@ -259,6 +294,7 @@ function onCollectRent(rent) {
       rent +
       " from his owned property"
   );
+  sub.next(true);
 }
 
 function onSuccessPassTravelBudget() {
@@ -268,25 +304,25 @@ function onSuccessPassTravelBudget() {
 function onPromptUserToBuy(tile) {
  
     //ai
-    if(currentPlayer.playeName == player2.playeName) {
-        if (currentPlayer.amount > (tile.tileAmount + 50 ) ) {
-            player2.buyProperty(tile, onSuccessBuy);
-        } else {
-            console.log('Player Skipped');
-        }
-    } else{
-        if (confirm("Buy " + tile.tileName + "?")) {
-            if(currentPlayer.playeName == player1.playeName) {
-                player1.buyProperty(tile, onSuccessBuy);
-            } else {
-                player2.buyProperty(tile, onSuccessBuy);
-            }
-          } else {
-              console.log('Player Skipped');
-        }
-    }
+    // if(currentPlayer.playeName == player2.playeName) {
+    //     if (currentPlayer.amount > (tile.tileAmount + 50 ) ) {
+    //         player2.buyProperty(tile, onSuccessBuy);
+    //     } else {
+    //         console.log('Player Skipped');
+    //     }
+    // } else{
+    //     if (confirm("Buy " + tile.tileName + "?")) {
+    //         if(currentPlayer.playeName == player1.playeName) {
+    //             player1.buyProperty(tile, onSuccessBuy);
+    //         } else {
+    //             player2.buyProperty(tile, onSuccessBuy);
+    //         }
+    //       } else {
+    //           console.log('Player Skipped');
+    //     }
+    // }
     // isPlayerDecided = false;  
-    // showPropertyBuyPrompt(tile, onConfirmBuyProperty, onSkipBuy);
+     showPropertyBuyPrompt(tile);
 }
 
 function onConfirmBuyProperty(prop) {
@@ -298,6 +334,7 @@ function onConfirmBuyProperty(prop) {
   document
     .getElementById("propertyBuyPrompt")
     .setAttribute("class", "propertyBuy hidden");
+    globalProp = null;
 }
 
 function onSkipBuy() {
@@ -305,14 +342,18 @@ function onSkipBuy() {
   document
     .getElementById("propertyBuyPrompt")
     .setAttribute("class", "propertyBuy hidden");
+    globalProp = null;    
+    sub.next(true);        
 }
 
 function onFailMoneyProcess() {
   window.alert(currentPlayer.playeName + " do not have enough money");
+  sub.next(true);
 }
 
 function onPayGovTax(amt) {
   window.alert(currentPlayer.playeName + " has to pay " + amt + " as Tax.");
+  sub.next(true);
 }
 
 function onPayTaxDuetoOtherPlayerProps(tax) {
@@ -327,35 +368,52 @@ function onPayTaxDuetoOtherPlayerProps(tax) {
   } else {
     player2.collectTax(tax);
   }
+  sub.next(true);
 }
 
 function onSuccessBuy(amt) {
-  window.alert(currentPlayer.playeName + " bought property that worth " + amt);
+ // window.alert(currentPlayer.playeName + " bought property that worth " + amt);
+ document.getElementById('kaching').play();
+ sub.next(true);
+
 }
 
 function onSuccessMystery(random, plusOrMinus) {
-  window.alert(
-    currentPlayer.playeName +
-      " draws Mystery card and " +
-      (plusOrMinus == 0 ? "rewarded " : "taxed ") +
-      "$" +
-      random
-  );
+//   window.alert(
+//     currentPlayer.playeName +
+//       " draws Mystery card and " +
+//       (plusOrMinus == 0 ? "rewarded " : "taxed ") +
+//       "$" +
+//       random
+//   );
+  if (plusOrMinus == 0) {
+    $('#mysteryCardImg').attr('src', 'assets/img/svg/winning.jpg');
+    $('#title').html("GOT MONEY!!");
+    $('#description').html("You got $"+random+" from street");
+    // document.getElementById('injured').play();
+  } else {
+    $('#mysteryCardImg').attr('src', 'assets/img/svg/winning.jpg');
+    $('#title').html("GOT INJURED!!");
+    $('#description').html("Must pay $"+random+" hospital bills");
+    document.getElementById('injured').play();
+  }
+  document.getElementById('mysteryCardsPanel').setAttribute('class', 'mysteryCardsPanel');
+  setTimeout( () => {
+    document.getElementById('mysteryCardsPanel').setAttribute('class', 'mysteryCardsPanel hidden');
+    sub.next(true);
+  },4000);
 
 }
 
-function showPropertyBuyPrompt(property, onConfirm, onCancel) {
+function onUserChoseToBuy() {
+    onConfirmBuyProperty(globalProp);
+}
+
+function showPropertyBuyPrompt(property) {
   $("#amount").html("$" + property.tileAmount);
   $("#property_name").html("$" + property.tileName);
   $("#propertyAsset").attr("src", property.image);
-
-  $("#buy").click(function () {
-    onConfirm(property);
-  });
-
-  $("#cancel").click(function () {
-    onCancel();
-  });
+  globalProp = property;
 
   document
     .getElementById("propertyBuyPrompt")
