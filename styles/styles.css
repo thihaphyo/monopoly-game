@@ -156,7 +156,7 @@ button {
   width: 100%;
 }
 
-.boardCenter, .playGround, .playerAvatar #p1, .playerAvatar #p2,.playerAvatar #p3{
+.boardCenter, .playGround ,.playerAvatar #p3{
   position: absolute;
 
 }
@@ -250,20 +250,19 @@ button {
   z-index: 2;
 } */
 #p1{
-  left: 30px;
-  z-index: 999;
-  display: inline-block;
-  position: absolute;
+  width: 18px;
+  height: 18px;
+  transform: rotate(180deg);
 }
 #p2{
-  left: 78px;
-  z-index: 999;
-  position: absolute;
+  width: 18px;
+  height: 18px;
+  transform: rotate(180deg);
 }
 
 #p1Icon, #p2Icon {
   display: inline-block;
-  background-color: var(--textColor2);
+  /* background-color: var(--textColor2); */
   position: absolute;
   width: 15px;
   height: 15px;
@@ -273,7 +272,7 @@ button {
 }
 
 #p2Icon {
-  background-color: var(--textColor1) !important;
+  /* background-color: var(--textColor1) !important; */
   left: 20px;
 }
 

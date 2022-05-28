@@ -50,7 +50,7 @@ const movePlayer = () => {
   // move & Game logic
   let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
   if (!p.isInJail) {
-    for (let index = 0; index < 1; index++) {
+    for (let index = 0; index < currentRoll; index++) {
       if (currentPlayer.currentPosition == 11) {
         let pos =
           Number(
@@ -228,7 +228,6 @@ const gameLogic = () => {
     } else if (tile.tileType.rule == rule.tax) {
       player1.payGovTaxes(tile, onPayGovTax);
     } else if (tile.tileType.rule == rule.mystery) {
-      console.log("aaadsddsm");
       player1.landOnMysteryCard(onSuccessMystery);
     } 
   } else {
@@ -328,15 +327,10 @@ function onPayTaxDuetoOtherPlayerProps(tax) {
   } else {
     player2.collectTax(tax);
   }
-//   isPlayerDecided = true;
 }
 
 function onSuccessBuy(amt) {
-//   if (currentPlayer.playeName == player2.playeName) {
-//     window.alert(currentPlayer.playeName + " bought property that worth " + amt);
-//   }  
   window.alert(currentPlayer.playeName + " bought property that worth " + amt);
-  //isPlayerDecided = true;
 }
 
 function onSuccessMystery(random, plusOrMinus) {
@@ -347,7 +341,7 @@ function onSuccessMystery(random, plusOrMinus) {
       "$" +
       random
   );
- // isPlayerDecided = true;
+
 }
 
 function showPropertyBuyPrompt(property, onConfirm, onCancel) {
