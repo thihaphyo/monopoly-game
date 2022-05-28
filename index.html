@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles/styles.css" />
   <link rel="stylesheet" href="styles/animation.css" />
   <link rel="stylesheet" href="styles/board grid.css" />
+  <script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
@@ -60,14 +61,12 @@
           <h1>MONOPOLY </h1>
       </div>
       <div class="theBoard">
-        <!-- Start -->
-        <img class="hidden" id="p1" width="40px" src="assets/img/avatars/avatar.png" alt="" />
-        <img class="hidden" id="p2" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+        <!-- Start --> 
         <div class="player1" id="p1Icon">
-
+          <img class="" id="p1"  src="assets/img/avatars/avatar.png" alt="" />
         </div>
         <div class="player2" id="p2Icon">
-
+          <img class="" id="p2" src="assets/img/avatars/avatar2.png" alt="" />
         </div>
         <div class="boardGrid" id="B1">
           <!-- <div class="playerAvatar">
@@ -511,16 +510,16 @@
         <img id="propertyAsset" width="70%" src="assets/img/Japan/tokyo.png" alt="" />
         <h1 id="amount">$100</h1>
         <p id="property_name">Tokyo</p>
-        <button id="buy">BUY</button>
-        <button id="cancel">Cancel</button>
+        <button id="buy" onclick="onUserChoseToBuy()">BUY</button>
+        <button id="cancel" onclick="onSkipBuy()">Cancel</button>
       </div>
     </div>
 
-    <div class="mysteryCardsPanel hidden">
+    <div id="mysteryCardsPanel" class="mysteryCardsPanel hidden">
       <div>
-        <img width="70%" src="assets/img/svg/hospital.jpg" alt="" />
-        <h1>GOT INJURIED</h1>
-        <p>Must pay $20 hospital bills</p>
+        <img id="mysteryCardImg" width="70%" src="assets/img/svg/hospital.jpg" alt="" />
+        <h1 id="title">GOT INJURIED</h1>
+        <p id="description">Must pay $20 hospital bills</p>
       </div>
     </div>
 
@@ -531,6 +530,12 @@
         <p>YOU ARE THE WINNER</p>
       </div>
     </div>
+    <audio id="dice_roll" src="assets/sounds/dice_roll.mp3"></audio>
+    <audio id="kaching" src="assets/sounds/ka_ching.mp3"></audio>
+    <audio id="injured" src="assets/sounds/injured.mp3"></audio>
+    <audio id="free_money" src="assets/sounds/free_money.mp3"></audio>
+    <audio id="click" src="assets/sounds/click.mp3"></audio>
+    <audio id="main" src="assets/sounds/main.mp3"></audio>
 
     <script src="scripts/style.js"></script>
     <script src="scripts/Objects.js"></script>

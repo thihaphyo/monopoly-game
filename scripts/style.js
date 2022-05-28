@@ -1,8 +1,10 @@
 const startNow = () => {
+  document.getElementById('click').play();
   document.getElementsByClassName("landingPage")[0].classList.add("fade-out");
 
   setTimeout(() => {
     document.getElementsByClassName("landingPage")[0].classList.add("hidden");
+    document.getElementById("main").play();
   }, 2000);
 
   setTimeout(() => {
@@ -32,5 +34,6 @@ const startNow = () => {
   setTimeout(() => {
     document.getElementsByClassName("loadingPage")[0].classList.add("hidden");
     document.getElementsByClassName("playGround")[0].classList.remove("hidden");
+    document.getElementById("main").pause();
   }, 13000);
 };
