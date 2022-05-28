@@ -53,7 +53,7 @@ const movePlayer = () => {
   // move & Game logic
   let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
   if (!p.isInJail) {
-    for (let index = 0; index < 1; index++) {
+    for (let index = 0; index < currentRoll; index++) {
       if (currentPlayer.currentPosition == 11) {
         let pos =
           Number(
@@ -175,28 +175,6 @@ const movePlayer = () => {
         currentPlayer.currentPosition
     );
   }
-
-//   setTimeout(() => {
-//     if (isGameOver) {
-//       return;
-//     }
-//     document
-//           .getElementById("diceContainer")
-//           .setAttribute("class", "diceContainer hidden");
-//         if (currentPlayer.playeName == player1.playeName) {
-//           p1.currentPosition = currentPlayer.currentPosition;
-//           currentPlayer = player2;
-//         } else {
-//           p2.currentPosition = currentPlayer.currentPosition;
-//           currentPlayer = player1;
-//         }
-//         currentRoll = 0;
-//         $("#btnRollDice").prop("disabled", false);
-//         setTimeout(() => {
-//             $("#diceResult").html("");
-//         },1000)
-//         readyPlayers();
-//   }, 1000);
 
   checkGameStatus();
 };
@@ -388,9 +366,9 @@ function onSuccessMystery(random, plusOrMinus) {
 //   );
   if (plusOrMinus == 0) {
     $('#mysteryCardImg').attr('src', 'assets/img/svg/winning.jpg');
-    $('#title').html("GOT MONEY!!");
+    $('#title').html("KA-CHING");
     $('#description').html("You got $"+random+" from street");
-    // document.getElementById('injured').play();
+    document.getElementById('free_money').play();
   } else {
     $('#mysteryCardImg').attr('src', 'assets/img/svg/winning.jpg');
     $('#title').html("GOT INJURED!!");
