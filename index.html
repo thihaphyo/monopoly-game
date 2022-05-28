@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles/styles.css" />
   <link rel="stylesheet" href="styles/animation.css" />
   <link rel="stylesheet" href="styles/board grid.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -48,20 +49,31 @@
       </div>
       <img class="rotate-90-cw" width="2%" src="assets/img/png/refresh.png" alt="" />
     </div>
-
     <div class="playGround fade-in hidden">
+      <div id="diceResult">
+      </div>
+      <div id="diceContainer" class="diceContainer hidden">
+        <img class="dice" src="assets/img/dice/dice_1.png" id="die1">
+        <img class="dice" src="assets/img/dice/dice_1.png" id="die2">
+      </div>
       <div class="center">
           <h1>MONOPOLY </h1>
       </div>
       <div class="theBoard">
         <!-- Start -->
-        <div class="boardGrid" id="B1">
-          <div class="playerAvatar">
-            <img class="" id="p1" width="40px" src="assets/img/avatars/avatar.png" alt="" />
-            <img class="" id="p2" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
-            <img class="hidden" id="p3" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
-          </div>
+        <img class="hidden" id="p1" width="40px" src="assets/img/avatars/avatar.png" alt="" />
+        <img class="hidden" id="p2" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+        <div class="player1" id="p1Icon">
 
+        </div>
+        <div class="player2" id="p2Icon">
+
+        </div>
+        <div class="boardGrid" id="B1">
+          <!-- <div class="playerAvatar">
+            
+            <img class="hidden" id="p3" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
+          </div> -->
           <p>Let's Travel</p>
           <img width="80px" src="assets/img/png/world.png" alt="" />
           <p id="budgetLimit">
@@ -420,7 +432,7 @@
         <!-- Title -->
         <div>
           <img id="childrenStuff" src="assets/img/png/children stuffs.png" alt="" />
-          <h1>PLAYER </h1>
+          <h1 id="turn">PLAYER </h1>
         </div>
         
         <!-- Player Status -->
@@ -431,21 +443,21 @@
             <img width="80px" src="assets/img/avatars/avatar2.png" alt="" />
             <img src="assets/img/svg/avatar1Icon.svg" alt="">
             <div class="playerInfo">
-              <p class="playerName">James</p>
-              <h1 class="playerMoney" id="p1Monery">$1500</h1>
+              <p class="playerName" id="p1Name">James</p>
+              <h1 class="playerMoney" id="p1Money">$1500</h1>
             </div>
           </div>   
           
           <div class="propertiesCards">
             <div class="property">
                 <h2>Properties</h2>
-                <div class="gridForProperty">
+                <div class="gridForProperty" id="p1Property">
+                  <!-- <p>- Tokyo</p>
                   <p>- Tokyo</p>
-                  <p>- Tokyo</p>
-                  <p>- Tokyo</p>
+                  <p>- Tokyo</p> -->
                 </div>
             </div>
-            <div class="cards">
+            <div class="cards hidden">
               <h2>Cards</h2>
               <div class="gridForProperty">
                 <p>- Tokyo</p>
@@ -462,21 +474,21 @@
             <img width="80px" src="assets/img/avatars/avatar.png" alt="" />
             <img src="assets/img/svg/avatar2Icon.svg" alt="">
             <div class="playerInfo">
-              <p class="playerName">Logan</p>
-              <h1 class="playerMoney" id="p1Monery">$1500</h1>
+              <p class="playerName" id="p2Name">Logan</p>
+              <h1 class="playerMoney" id="p2Money">$1500</h1>
             </div>
           </div>
 
           <div class="propertiesCards">
             <div class="property">
                 <h2>Properties</h2>
-                <div class="gridForProperty">
+                <div class="gridForProperty" id="p2Property">
+                  <!-- <p>- Tokyo</p>
                   <p>- Tokyo</p>
-                  <p>- Tokyo</p>
-                  <p>- Tokyo</p>
+                  <p>- Tokyo</p> -->
                 </div>
             </div>
-            <div class="cards">
+            <div class="cards hidden">
               <h2>Cards</h2>
               <div class="gridForProperty">
                 <p>- Tokyo</p>
@@ -489,16 +501,16 @@
         
         <!-- Dice Button -->
         <div class="rollTheDice">
-            <button>ROLL  THE DICE</button>
+            <button id="btnRollDice">ROLL  THE DICE</button>
         </div>
       </div>
     </div>
 
-    <div class="propertyBuy hidden">
+    <div id="propertyBuyPrompt" class="propertyBuy hidden">
       <div>
         <img width="70%" src="assets/img/Japan/tokyo.png" alt="" />
-        <h1>$100</h1>
-        <p>Tokyo</p>
+        <h1 id="amount">$100</h1>
+        <p id="property_name">Tokyo</p>
         <button id="buy">BUY</button>
         <button id="cancel">Cancel</button>
       </div>
@@ -512,7 +524,7 @@
       </div>
     </div>
 
-    <div class="winnerCards hidden">
+    <div id="winner" class="winnerCards hidden">
       <div>
         <img width="80%" src="assets/img/svg/winning.jpg" alt="" />
         <h1>JAME</h1>
@@ -521,6 +533,7 @@
     </div>
 
     <script src="scripts/style.js"></script>
+    <script src="scripts/Objects.js"></script>
     <script src="scripts/script.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
