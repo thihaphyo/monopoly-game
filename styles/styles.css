@@ -250,13 +250,13 @@ button {
   z-index: 2;
 } */
 #p1{
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
   transform: rotate(180deg);
 }
 #p2{
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
   transform: rotate(180deg);
 }
 

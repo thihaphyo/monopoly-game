@@ -38,7 +38,7 @@ let tiles = [
         9,"San Fraciso", new TileType("property", rule.property), 100 , null, "assets/img/United State/sanfra.png"
     ),
     new Tiles(
-        10,"Washington", new TileType("property", rule.property), 100, null, "assets/img/United State/washindc.png"
+        10,"Washington", new TileType("property", rule.property), 120, null, "assets/img/United State/washindc.png"
     ),
     new Tiles(
         11,"Police Station", new TileType("jail", rule.jail), null , null ,null
@@ -53,7 +53,7 @@ let tiles = [
         14,"MysteryCard", new TileType("mystery", rule.mystery), null, null, null
     ),
     new Tiles(
-        15,"Tower", new TileType("property", rule.property), 140 , null, "assets/img/London/tower.png"
+        15,"Tower", new TileType("property", rule.property), 160 , null, "assets/img/London/tower.png"
     ),
     new Tiles(
         16,"Toll Gate", new TileType("tax", rule.tax), 100 ,null, null
@@ -110,19 +110,16 @@ let tiles = [
         32,"Bulguka", new TileType("property", rule.property), 320 , null, "assets/img/Korea/korea1.png"
     ),
     new Tiles(
-        33,"Toll Gate", new TileType("tax", rule.tax), 100 , null , null
+        33,"MysteryCard", new TileType("mystery", rule.mystery), null , null , null
     ),
     new Tiles(
-        34,"MysteryCard", new TileType("mystery", rule.mystery), null , null , null
+        34,"Pagodas", new TileType("property", rule.property), 350 , null, "assets/img/Thailand/pagoda.png"
     ),
     new Tiles(
-        35,"Pagodas", new TileType("property", rule.property), 350 , null, "assets/img/Thailand/pagoda.png"
+        35,"Mall", new TileType("property", rule.property), 400 , null, "assets/img/Thailand/shopping mall.png"
     ),
     new Tiles(
-        36,"Mall", new TileType("property", rule.property), 400 , null, "assets/img/Thailand/shopping mall.png"
-    ),
-    new Tiles(
-        37,"Monopoly Pass", new TileType("budgetLimit", rule.budgetLimit), 200 ,null ,null
+        36,"Monopoly Pass", new TileType("budgetLimit", rule.budgetLimit), 200 ,null ,null
     )
 ];
 
@@ -142,7 +139,8 @@ Player.prototype.getLandingTile = function() {
 
 Player.prototype.landOnMysteryCard = function(onSuccess) {
     let random = Math.floor(Math.random() * (100 - 20) + 20);
-    let plusOrMinus = Math.floor(Math.random() * (0 - 1) + 1);
+    let plusOrMinus = Math.floor(Math.random() * 2);
+    console.log("POM" + plusOrMinus);
     if (plusOrMinus == 0) {
         this.amount+=random;
     } else {
