@@ -1,5 +1,5 @@
-let player1 = new Player("Logan", 15000, []);
-let player2 = new Player("Jame", 15000, []);
+let player1 = new Player("Jame", 400, []);
+let player2 = new Player("Logan", 1500, []);
 let currentRoll = 0;
 let currentPlayer = player1;
 let log = [];
@@ -11,6 +11,7 @@ const { ReplaySubject } = rxjs;
 const sub = new ReplaySubject();
 
 const readyPlayers = () => {
+  tiles[1].ownedBy = player1;
   [player1, player2].forEach((v, i) => {
     let index = i + 1;
     if (v.playeName == currentPlayer.playeName) {
@@ -20,7 +21,7 @@ const readyPlayers = () => {
     $("#p" + index + "Money").html("$" + v.amount);
     $("#p" + index + "Property").html("");
     v.ownedProperties.forEach((value) => {
-      $("#p" + index + "Property").append("<p>" + value + "</p>");
+      $("#p" + index + "Property").append("<p>- " + value + "</p>");
     });
   });
   if (
@@ -29,10 +30,6 @@ const readyPlayers = () => {
     playersMoveOut = true;
   }
   console.log(log);
-  //   if (currentPlayer.playeName == player2.playeName) {
-  //       //ai
-  //       rollDice();
-  //   }
 };
 
 const rollDice = () => {
@@ -50,141 +47,140 @@ const rollDice = () => {
 };
 
 const movePlayer = () => {
-  // move & Game logic
-  let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
-  if (!p.isInJail) {
-    for (let index = 0; index < currentRoll; index++) {
-      if (currentPlayer.currentPosition == 11) {
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("top")
-              .replace(/px/g, "")
-          ) + 190;
-        let pos2 =
-          Number(
-            $("#p" + p + "Icon")
-              .css("left")
-              .replace(/px/g, "")
-          ) - 20;  
-        $("#p" + p + "Icon").css({ top: pos, left: pos2 });
-        currentPlayer.currentPosition++;
-      } else if (
-        currentPlayer.currentPosition > 11 &&
-        currentPlayer.currentPosition < 19
-      ) {
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("top")
-              .replace(/px/g, "")
-          ) + 110;
-        $("#p" + p + "Icon").css({ top: pos });
-        currentPlayer.currentPosition++;
-      } else if (currentPlayer.currentPosition == 19) {
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("left")
-              .replace(/px/g, "")
-          ) - 100;
-        $("#p" + p + "Icon").css({ left: pos });
-        currentPlayer.currentPosition++;
-      } else if (
-        currentPlayer.currentPosition > 19 &&
-        currentPlayer.currentPosition < 29
-      ) {
-        if (currentPlayer.currentPosition == 28 && index == currentRoll - 1) {
-          console.log("Jailed");
-          let leftSide = 110 * 11 + 10;
-          let top = 10;
-          $("#p" + p + "Icon").css({ top: top, left: leftSide });
-          currentPlayer.currentPosition = 10;
-          if (currentPlayer.playeName == player1.playeName) {
-            currentPlayer.isInJail = true;
-            $("#p" + p + "Icon").css({ top: top, left: leftSide - 20 });
-          } else {
-            currentPlayer.isInJail = false;
-          }
+    let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
+    if (!p.isInJail) {
+      for (let index = 0; index < 1; index++) {
+        if (currentPlayer.currentPosition == 11) {
+          let pos =
+            Number(
+              $("#p" + p + "Icon")
+                .css("top")
+                .replace(/px/g, "")
+            ) + 190;
+          let pos2 =
+            Number(
+              $("#p" + p + "Icon")
+                .css("left")
+                .replace(/px/g, "")
+            ) - 20;  
+          $("#p" + p + "Icon").css({ top: pos, left: pos2 });
           currentPlayer.currentPosition++;
+        } else if (
+          currentPlayer.currentPosition > 11 &&
+          currentPlayer.currentPosition < 19
+        ) {
+          let pos =
+            Number(
+              $("#p" + p + "Icon")
+                .css("top")
+                .replace(/px/g, "")
+            ) + 110;
+          $("#p" + p + "Icon").css({ top: pos });
+          currentPlayer.currentPosition++;
+        } else if (currentPlayer.currentPosition == 19) {
+          let pos =
+            Number(
+              $("#p" + p + "Icon")
+                .css("left")
+                .replace(/px/g, "")
+            ) - 100;
+          $("#p" + p + "Icon").css({ left: pos });
+          currentPlayer.currentPosition++;
+        } else if (
+          currentPlayer.currentPosition > 19 &&
+          currentPlayer.currentPosition < 29
+        ) {
+          if (currentPlayer.currentPosition == 28 && index == currentRoll - 1) {
+            console.log("Jailed");
+            let leftSide = 110 * 11 + 10;
+            let top = 10;
+            $("#p" + p + "Icon").css({ top: top, left: leftSide });
+            currentPlayer.currentPosition = 10;
+            if (currentPlayer.playeName == player1.playeName) {
+              currentPlayer.isInJail = true;
+              $("#p" + p + "Icon").css({ top: top, left: leftSide - 20 });
+            } else {
+              currentPlayer.isInJail = false;
+            }
+            currentPlayer.currentPosition++;
+          } else {
+            let pos =
+              Number(
+                $("#p" + p + "Icon")
+                  .css("left")
+                  .replace(/px/g, "")
+              ) - 120;
+            $("#p" + p + "Icon").css({ left: pos });
+            currentPlayer.currentPosition++;
+          }
+        } else if (currentPlayer.currentPosition == 29) {
+          let pos =
+            Number(
+              $("#p" + p + "Icon")
+                .css("top")
+                .replace(/px/g, "")
+            ) - 110;
+          $("#p" + p + "Icon").css({ top: pos });
+          currentPlayer.currentPosition++;
+        } else if (
+          currentPlayer.currentPosition > 29 &&
+          currentPlayer.currentPosition < 36
+        ) {
+          let pos =
+            Number(
+              $("#p" + p + "Icon")
+                .css("top")
+                .replace(/px/g, "")
+            ) - 110;
+          $("#p" + p + "Icon").css({ top: pos });
+          currentPlayer.currentPosition++;
+        } else if (currentPlayer.currentPosition == 36) {
+          currentPlayer.currentPosition = 1;
+          let pos =
+            Number(
+              $("#p" + p + "Icon")
+                .css("left")
+                .replace(/px/g, "")
+            ) + 110;
+          $("#p" + p + "Icon").css({ left: pos, top: "10px" });
         } else {
           let pos =
             Number(
               $("#p" + p + "Icon")
                 .css("left")
                 .replace(/px/g, "")
-            ) - 120;
+            ) + 120;
           $("#p" + p + "Icon").css({ left: pos });
           currentPlayer.currentPosition++;
         }
-      } else if (currentPlayer.currentPosition == 29) {
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("top")
-              .replace(/px/g, "")
-          ) - 110;
-        $("#p" + p + "Icon").css({ top: pos });
-        currentPlayer.currentPosition++;
-      } else if (
-        currentPlayer.currentPosition > 29 &&
-        currentPlayer.currentPosition < 36
-      ) {
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("top")
-              .replace(/px/g, "")
-          ) - 110;
-        $("#p" + p + "Icon").css({ top: pos });
-        currentPlayer.currentPosition++;
-      } else if (currentPlayer.currentPosition == 36) {
-        currentPlayer.currentPosition = 1;
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("left")
-              .replace(/px/g, "")
-          ) + 110;
-        $("#p" + p + "Icon").css({ left: pos, top: "10px" });
-      } else {
-        let pos =
-          Number(
-            $("#p" + p + "Icon")
-              .css("left")
-              .replace(/px/g, "")
-          ) + 120;
-        $("#p" + p + "Icon").css({ left: pos });
-        currentPlayer.currentPosition++;
+        console.log("ROll P" + currentPlayer.currentPosition);
+        
       }
-      console.log("ROll P" + currentPlayer.currentPosition);
-      
+  
+      gameLogic();
+  
+      log.push(
+        currentPlayer.playeName +
+          " rolled " +
+          currentRoll +
+          " and amt " +
+          currentPlayer.amount +
+          " and moved " +
+          currentPlayer.currentPosition
+      );
+    } else {
+      log.push(
+        currentPlayer.playeName +
+          " rolled " +
+          currentRoll +
+          " and in jailed " +
+          currentPlayer.amount +
+          " and moved " +
+          currentPlayer.currentPosition
+      );
     }
-
-    gameLogic();
-
-    log.push(
-      currentPlayer.playeName +
-        " rolled " +
-        currentRoll +
-        " and amt " +
-        currentPlayer.amount +
-        " and moved " +
-        currentPlayer.currentPosition
-    );
-  } else {
-    log.push(
-      currentPlayer.playeName +
-        " rolled " +
-        currentRoll +
-        " and in jailed " +
-        currentPlayer.amount +
-        " and moved " +
-        currentPlayer.currentPosition
-    );
-  }
-
-  checkGameStatus();
+  
+    checkGameStatus();
 };
 
 $(document).ready(function () {
@@ -230,7 +226,8 @@ const gameLogic = () => {
 
   if (currentPlayer.playeName == player1.playeName) {
     let tile = player1.getLandingTile();
-    if (tile.tileType.rule == rule.property) {
+    console.log(title);
+   if (tile.tileType.rule == rule.property) {
       player1.landedOnProperty(
         tile,
         onPromptUserToBuy,
@@ -247,7 +244,7 @@ const gameLogic = () => {
     }
   } else {
     let tile = player2.getLandingTile();
-     if (tile.tileType.rule == rule.property) {
+    if (tile.tileType.rule == rule.property) {
       player2.landedOnProperty(
         tile,
         onPromptUserToBuy,
@@ -265,41 +262,46 @@ const gameLogic = () => {
   }
 };
 
-function onCollectRent(rent) {
-  window.alert(
-    currentPlayer.playeName +
-      " collect rent of $" +
-      rent +
-      " from his owned property"
+function onCollectRent(rent, property) {
+ 
+  document.getElementById("free_money").play();
+
+  $("#feesTaxesCardImg").attr("src", "assets/img/svg/collect_rent.svg");
+  $("#ftTitle").html(property.ownedBy.playeName + "'s PROPERTY");
+  $("#ftDescription").html(
+    currentPlayer.playeName + " collects $" + rent + " as rent for landing on " + property.tileName
   );
-  sub.next(true);
+  document
+    .getElementById("taxesCardsPanel")
+    .setAttribute("class", "mysteryCardsPanel");
+  setTimeout(() => {
+    document
+      .getElementById("taxesCardsPanel")
+      .setAttribute("class", "mysteryCardsPanel hidden");
+      sub.next(true);
+      $('#buy').show();
+  }, 3000);
 }
 
 function onSuccessPassTravelBudget() {
-  window.alert(currentPlayer.playeName + " got $200");
+  $("#feesTaxesCardImg").attr("src", "assets/img/svg/no money.svg");
+  $("#ftTitle").html("NO MONEY");
+  $("#ftDescription").html(
+    currentPlayer.playeName + " You dont have enough money"
+  );
+  document
+    .getElementById("taxesCardsPanel")
+    .setAttribute("class", "mysteryCardsPanel");
+  setTimeout(() => {
+    document
+      .getElementById("taxesCardsPanel")
+      .setAttribute("class", "mysteryCardsPanel hidden");
+    sub.next(true);
+  }, 5000);
   sub.next(true);
 }
 
 function onPromptUserToBuy(tile) {
-  //ai
-  // if(currentPlayer.playeName == player2.playeName) {
-  //     if (currentPlayer.amount > (tile.tileAmount + 50 ) ) {
-  //         player2.buyProperty(tile, onSuccessBuy);
-  //     } else {
-  //         console.log('Player Skipped');
-  //     }
-  // } else{
-  //     if (confirm("Buy " + tile.tileName + "?")) {
-  //         if(currentPlayer.playeName == player1.playeName) {
-  //             player1.buyProperty(tile, onSuccessBuy);
-  //         } else {
-  //             player2.buyProperty(tile, onSuccessBuy);
-  //         }
-  //       } else {
-  //           console.log('Player Skipped');
-  //     }
-  // }
-  // isPlayerDecided = false;
   showPropertyBuyPrompt(tile);
 }
 
@@ -325,52 +327,79 @@ function onSkipBuy() {
 }
 
 function onFailMoneyProcess() {
-  window.alert(currentPlayer.playeName + " do not have enough money");
+  $("#feesTaxesCardImg").attr("src", "assets/img/svg/no money.svg");
+  $("#ftTitle").html("NO MONEY");
+  $("#ftDescription").html(
+    currentPlayer.playeName + " You dont have enough money"
+  );
+  document
+    .getElementById("taxesCardsPanel")
+    .setAttribute("class", "mysteryCardsPanel");
+  setTimeout(() => {
+    document
+      .getElementById("taxesCardsPanel")
+      .setAttribute("class", "mysteryCardsPanel hidden");
+    sub.next(true);
+  }, 5000);
   sub.next(true);
 }
 
 function onPayGovTax(amt) {
-  window.alert(currentPlayer.playeName + " has to pay " + amt + " as Tax.");
-  sub.next(true);
+  $("#feesTaxesCardImg").attr("src", "assets/img/svg/taxes.svg");
+  $("#ftTitle").html("CITY TAXES");
+  $("#ftDescription").html(
+    currentPlayer.playeName + " You have to pay $" + amt + " as taxes"
+  );
+  document
+    .getElementById("taxesCardsPanel")
+    .setAttribute("class", "mysteryCardsPanel");
+  setTimeout(() => {
+    document
+      .getElementById("taxesCardsPanel")
+      .setAttribute("class", "mysteryCardsPanel hidden");
+    sub.next(true);
+  }, 3000);
 }
 
-function onPayTaxDuetoOtherPlayerProps(tax) {
-  window.alert(
-    currentPlayer.playeName +
-      " paid " +
-      tax +
-      " for landing on other player's property"
+function onPayTaxDuetoOtherPlayerProps(tax, property) {
+  document.getElementById("free_money").play();
+
+  $("#feesTaxesCardImg").attr("src", "assets/img/svg/pay.svg");
+  $("#ftTitle").html(property.ownedBy.playeName + "'s PROPERTY");
+  $("#ftDescription").html(
+    currentPlayer.playeName + " have to pay $" + tax + " as tax for landing on " + property.tileName
   );
-  if (currentPlayer.playeName != player1.playeName) {
-    player1.collectTax(tax);
-  } else {
-    player2.collectTax(tax);
-  }
-  sub.next(true);
+  document
+    .getElementById("taxesCardsPanel")
+    .setAttribute("class", "mysteryCardsPanel");
+  setTimeout(() => {
+    document
+      .getElementById("taxesCardsPanel")
+      .setAttribute("class", "mysteryCardsPanel hidden");
+      if (currentPlayer.playeName != player1.playeName) {
+        player1.collectTax(tax);
+      } else {
+        player2.collectTax(tax);
+      }
+      sub.next(true);
+      $('#buy').show();
+  }, 3000);
 }
 
 function onSuccessBuy(amt) {
-  // window.alert(currentPlayer.playeName + " bought property that worth " + amt);
   document.getElementById("kaching").play();
   sub.next(true);
 }
 
 function onSuccessMystery(random, plusOrMinus) {
-  //   window.alert(
-  //     currentPlayer.playeName +
-  //       " draws Mystery card and " +
-  //       (plusOrMinus == 0 ? "rewarded " : "taxed ") +
-  //       "$" +
-  //       random
-  //   );
   if (plusOrMinus == 0) {
-    $("#mysteryCardImg").attr("src", "assets/img/svg/winning.jpg");
-    $("#title").html("KA-CHING");
-    $("#description").html("You got $" + random + " from street");
+    $("#mysteryCardImg").attr("src", "assets/img/svg/gift card.svg");
+    $("#title").html("GIFT CARD");
+    $("#description").html("You got $" + random + " gift card voucher");
     document.getElementById("free_money").play();
   } else {
-    $("#mysteryCardImg").attr("src", "assets/img/svg/hospital.jpg");
-    $("#title").html("GOT INJURED!!");
+    $("#mysteryCardImg").attr("src", "assets/img/svg/winning.jpg");
+    $("#title").html("GOT INJURED");
     $("#description").html("Must pay $" + random + " hospital bills");
     document.getElementById("injured").play();
   }
@@ -382,7 +411,7 @@ function onSuccessMystery(random, plusOrMinus) {
       .getElementById("mysteryCardsPanel")
       .setAttribute("class", "mysteryCardsPanel hidden");
     sub.next(true);
-  }, 4000);
+  }, 3000);
 }
 
 function onUserChoseToBuy() {
@@ -390,8 +419,9 @@ function onUserChoseToBuy() {
 }
 
 function showPropertyBuyPrompt(property) {
+  $("#propertyBuyPanel").css("background-color", property.bgColor);
   $("#amount").html("$" + property.tileAmount);
-  $("#property_name").html("$" + property.tileName);
+  $("#property_name").html(property.tileName);
   $("#propertyAsset").attr("src", property.image);
   globalProp = property;
 
@@ -403,10 +433,14 @@ function showPropertyBuyPrompt(property) {
 const checkGameStatus = () => {
   if (player1.amount <= 0) {
     isGameOver = true;
-    window.alert(player2.playeName + " Wins");
+    $('#winner_name').html(player2.playeName + " Wins");
+    document.getElementById('winner').setAttribute('class', "winnerCards" );
+    document.getElementById('win').play();
   } else if (player2.amount <= 0) {
     isGameOver = true;
-    window.alert(player1.playeName + " Wins");
+    $('#winner_name').html(player1.playeName + " Wins");
+    document.getElementById('winner').setAttribute('class', "winnerCards" );
+    document.getElementById('win').play();
   }
 
   if (isGameOver) {

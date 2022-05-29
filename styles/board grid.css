@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  background-color: #ffffff !important;
+  background-color: #e3e3e3 !important;
 }
 .playGround > .theBoard {
   width: 60%;
@@ -28,11 +28,11 @@
 .center{
 
   position: absolute;
-  width: 1074px;
-  height: 786px;
+  width: 1072px;
+  height: 780px;
+  top: 8.4%;
+  left: 7.4%;
   background-color: var(--backgroundColor2);
-  top: 14.4%;
-  left: 7.6%;
   background-image: url('../assets/img/svg/theWorld.svg');
   background-position:center;
   background-repeat: no-repeat;
