@@ -15,7 +15,7 @@
 
 <body>
   <div class="container">
-    <div class="landingPage">
+    <div class="landingPage hidden">
       <div class="contentPanel">
         <img id="childrenStuff" src="assets/img/png/children stuffs.png" alt="" />
         <h1>MONOPOLY</h1>
@@ -50,7 +50,7 @@
       </div>
       <img class="rotate-90-cw" width="2%" src="assets/img/png/refresh.png" alt="" />
     </div>
-    <div class="playGround fade-in hidden">
+    <div class="playGround fade-in">
       <div id="diceResult">
       </div>
       <div id="diceContainer" class="diceContainer hidden">
@@ -62,17 +62,16 @@
       </div>
       <div class="theBoard">
         <!-- Start --> 
-        <div class="player1" id="p1Icon">
-          <img class="" id="p1"  src="assets/img/avatars/avatar.png" alt="" />
+        <div class="playerStartUp">
+          <div class="player1" id="p1Icon">
+            <img class="" id="p1"  src="assets/img/avatars/avatar2.png" alt="" />
+          </div>
+          <div class="player2" id="p2Icon">
+            <img class="" id="p2" src="assets/img/avatars/avatar.png" alt="" />
+          </div>
         </div>
-        <div class="player2" id="p2Icon">
-          <img class="" id="p2" src="assets/img/avatars/avatar2.png" alt="" />
-        </div>
+
         <div class="boardGrid" id="B1">
-          <!-- <div class="playerAvatar">
-            
-            <img class="hidden" id="p3" width="40px" src="assets/img/avatars/avatar2.png" alt="" />
-          </div> -->
           <p>Let's Travel</p>
           <img width="80px" src="assets/img/png/world.png" alt="" />
           <p id="budgetLimit">
@@ -451,9 +450,7 @@
             <div class="property">
                 <h2>Properties</h2>
                 <div class="gridForProperty" id="p1Property">
-                  <!-- <p>- Tokyo</p>
-                  <p>- Tokyo</p>
-                  <p>- Tokyo</p> -->
+      
                 </div>
             </div>
             <div class="cards hidden">
@@ -482,17 +479,13 @@
             <div class="property">
                 <h2>Properties</h2>
                 <div class="gridForProperty" id="p2Property">
-                  <!-- <p>- Tokyo</p>
-                  <p>- Tokyo</p>
-                  <p>- Tokyo</p> -->
+
                 </div>
             </div>
             <div class="cards hidden">
               <h2>Cards</h2>
               <div class="gridForProperty">
-                <p>- Tokyo</p>
-                <p>- Tokyo</p>
-                <p>- Tokyo</p>
+   
               </div>
             </div>
           </div>
@@ -506,15 +499,18 @@
     </div>
 
     <div id="propertyBuyPrompt" class="propertyBuy hidden">
-      <div>
+      <div id="propertyBuyPanel" >
         <img id="propertyAsset" width="70%" src="assets/img/Japan/tokyo.png" alt="" />
         <h1 id="amount">$100</h1>
-        <p id="property_name">Tokyo</p>
+        <p id="property_name">Osaka</p>
         <button id="buy" onclick="onUserChoseToBuy()">BUY</button>
-        <button id="cancel" onclick="onSkipBuy()">Cancel</button>
+        <button id="cancel" onclick="onSkipBuy()">
+          <img width="40px" src="assets/img/png/cancel.png" alt="">
+        </button>
       </div>
     </div>
 
+    <!-- Mystery Card Dialog -->
     <div id="mysteryCardsPanel" class="mysteryCardsPanel hidden">
       <div>
         <img id="mysteryCardImg" width="70%" src="assets/img/svg/hospital.jpg" alt="" />
@@ -523,6 +519,16 @@
       </div>
     </div>
 
+    <!-- Fees and Taxes Card Dialog -->
+    <div id="taxesCardsPanel" class="mysteryCardsPanel hidden">
+      <div>
+        <img id="feesTaxesCardImg" width="70%" src="" />
+        <h1 id="ftTitle">JAMES</h1>
+        <p id="ftDescription">You have not enough money</p>
+      </div>
+    </div>
+
+    <!-- Winner Dialog -->
     <div id="winner" class="winnerCards hidden">
       <div>
         <img width="80%" src="assets/img/svg/winning.jpg" alt="" />
@@ -530,6 +536,8 @@
         <p>YOU ARE THE WINNER</p>
       </div>
     </div>
+
+
     <audio id="dice_roll" src="assets/sounds/dice_roll.mp3"></audio>
     <audio id="kaching" src="assets/sounds/ka_ching.mp3"></audio>
     <audio id="injured" src="assets/sounds/injured.mp3"></audio>
@@ -541,24 +549,7 @@
     <script src="scripts/Objects.js"></script>
     <script src="scripts/script.js"></script>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script> -->
-    <script>
-      // const position = { x: 0, y: 0 };
 
-      // interact(".draggable").draggable({
-      //   listeners: {
-      //     start(event) {
-      //       console.log(event.type, event.target);
-      //     },
-      //     move(event) {
-      //       position.x += event.dx;
-      //       position.y += event.dy;
-
-      //       event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
-      //     },
-      //   },
-      // });
-    </script>
 </body>
 
 </html>

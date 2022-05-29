@@ -94,7 +94,7 @@ button {
   position: absolute;
   bottom: 0;
 }
-.contentPanel h1,.playerSection > div > h1, h1 {
+.contentPanel h1,.playerSection > div > h1,.center h1 {
   font-weight: 400;
   letter-spacing: 0.05em;
   line-height: 97px;
@@ -185,7 +185,7 @@ button {
 .playerSection{
   width: 40%;
   height: 100vh;
-  margin-left: 100px;
+  margin-left: 40px;
   background-color: #ffffff;
   border-radius: 1%;
   z-index: 1;
@@ -245,10 +245,9 @@ button {
   justify-content: flex-start;
   text-align: left;
 }
-
-/* .playerAvatar{
-  z-index: 2;
-} */
+.playerStartUp{
+  position: absolute;
+}
 #p1{
   width: 18px;
   height: 18px;
@@ -262,17 +261,14 @@ button {
 
 #p1Icon, #p2Icon {
   display: inline-block;
-  /* background-color: var(--textColor2); */
   position: absolute;
   width: 15px;
   height: 15px;
-  /* left: -480px; */
   top: 10px;
-  z-index: 1000;
+  z-index: 1;
 }
 
 #p2Icon {
-  /* background-color: var(--textColor1) !important; */
   left: 20px;
 }
 
@@ -318,7 +314,7 @@ button {
   color: var(--textColor4);
 }
 .property{
-  width: 50%; 
+  width: 90%; 
 }
 .propertiesCards div{
   margin-top: 20px;
@@ -328,16 +324,17 @@ button {
 }
 .propertiesCards div p{
   font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 .gridForProperty{
-  display: grid;
-  grid-template-columns: 100px 100px;
-  grid-template-rows: auto auto;
-  row-gap: 20px;
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+
   /* background-color: blue; */
 
 }
-.mysteryCardsPanel, .winnerCards{
+.mysteryCardsPanel, .winnerCards, .propertyBuy, .taxesCardsPanel{
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -345,14 +342,14 @@ button {
   color: var(--textColor2);
 
 }
-.mysteryCardsPanel div,.winnerCards div{
+.mysteryCardsPanel div,.winnerCards div, .taxesCardsPanel div{
   position: absolute;
   width: 20%;
-  height: 40%;
+  min-height: 40%;
   margin: auto;
   text-align: center;
   background-color: #ffffff;
-  top: 30%;
+  top: 20%;
   left: 40%;
   display: flex;
   flex-direction: column;
@@ -361,13 +358,15 @@ button {
   padding: 40px;
   
 }
+.mysteryCardsPanel div *{
+  padding: 20px 0px;
+}
 .propertyBuy div{
   position: absolute;
   width: 20%;
   height: 50%;
   margin: auto;
   text-align: center;
-  background-color: var(--boardCardColor1);
   color: var(--textColor3) !important;
   top: 20%;
   left: 40%;
@@ -378,12 +377,13 @@ button {
   align-items: center;
   padding: 40px 0px;
 }
-.propertyBuy div h1{
-  font:10rem;
+.propertyBuy div #amount{
+  font-size: 3rem !important;
 }
 .propertyBuy div p
 {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
+  color: #f1f1f1 !important;
 }
 .propertyBuy div #buy{
   background-color: #ffffff;
@@ -396,16 +396,18 @@ button {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .propertyBuy div #cancel{
-  width:  30%;
-  font-size: 1.4rem;
-  width: 40%;
-  padding: 10px 0px;
-  color: #3130307b;
+  position: absolute;
   background-color: transparent;
-  text-decoration: underline;
+  top: 20px;
+  right: 20px;
+  opacity: .2;
+
 }
 .mysteryCardsPanel div p,.winnerCards div p,.propertyBuy div p{
   font-family: var(--typeFace3);
+}
+.taxesCardsPanel div{
+  background-attachment: red;
 }
 .winnerCards{
   position: relative;
@@ -463,6 +465,10 @@ button:active {
   z-index: 999;
   top: 74%;
   left: 27%;
+
+}
+.diceContainer img{
+  opacity: 0.2;
 }
 
 #die1,#die2{

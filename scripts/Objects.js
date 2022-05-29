@@ -23,7 +23,8 @@ let tiles = [
     new TileType("property", rule.property),
     200,
     null,
-    "assets/img/Japan/tokyo.png"
+    "assets/img/Japan/tokyo.png",
+    "var(--boardCardColor1)"
   ),
   new Tiles(
     3,
@@ -39,7 +40,8 @@ let tiles = [
     new TileType("property", rule.property),
     200,
     null,
-    "assets/img/Japan/osaka.png"
+    "assets/img/Japan/osaka.png",
+    "var(--boardCardColor1)"
   ),
   new Tiles(5, "City Tax", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(6, "Toll Gate", new TileType("tax", rule.tax), 100, null, null),
@@ -49,7 +51,8 @@ let tiles = [
     new TileType("property", rule.property),
     100,
     null,
-    "assets/img/United State/statue-of-liberty.png"
+    "assets/img/United State/statue-of-liberty.png",
+    "var(--boardCardColor2)"
   ),
   new Tiles(
     8,
@@ -65,7 +68,8 @@ let tiles = [
     new TileType("property", rule.property),
     100,
     null,
-    "assets/img/United State/sanfra.png"
+    "assets/img/United State/sanfra.png",
+    "var(--boardCardColor2)"
   ),
   new Tiles(
     10,
@@ -73,7 +77,8 @@ let tiles = [
     new TileType("property", rule.property),
     100,
     null,
-    "assets/img/United State/washindc.png"
+    "assets/img/United State/washindc.png",
+    "var(--boardCardColor2)"
   ),
   new Tiles(
     11,
@@ -89,7 +94,8 @@ let tiles = [
     new TileType("property", rule.property),
     140,
     null,
-    "assets/img/London/london.png"
+    "assets/img/London/london.png",
+    "var(--boardCardColor3)"
   ),
   new Tiles(
     13,
@@ -97,7 +103,8 @@ let tiles = [
     new TileType("property", rule.property),
     140,
     null,
-    "assets/img/London/museum.png"
+    "assets/img/London/museum.png",
+    "var(--boardCardColor3)"
   ),
   new Tiles(
     14,
@@ -113,7 +120,8 @@ let tiles = [
     new TileType("property", rule.property),
     140,
     null,
-    "assets/img/London/tower.png"
+    "assets/img/London/tower.png",
+    "var(--boardCardColor3)"
   ),
   new Tiles(16, "Toll Gate", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(
@@ -122,7 +130,8 @@ let tiles = [
     new TileType("property", rule.property),
     180,
     null,
-    "assets/img/Dubai/aqa.png"
+    "assets/img/Dubai/aqa.png",
+    "var(--boardCardColor4)"
   ),
   new Tiles(
     18,
@@ -130,7 +139,8 @@ let tiles = [
     new TileType("property", rule.property),
     180,
     null,
-    "assets/img/Dubai/ski.png"
+    "assets/img/Dubai/ski.png",
+    "var(--boardCardColor4)"
   ),
   new Tiles(19, "Rest", new TileType("free", rule.free), 0, null, null),
   new Tiles(
@@ -139,7 +149,8 @@ let tiles = [
     new TileType("property", rule.property),
     220,
     null,
-    "assets/img/Singapore/maribay.png"
+    "assets/img/Singapore/maribay.png",
+    "var(--boardCardColor5)"
   ),
   new Tiles(
     21,
@@ -155,7 +166,8 @@ let tiles = [
     new TileType("property", rule.property),
     220,
     null,
-    "assets/img/Singapore/chinatown.png"
+    "assets/img/Singapore/chinatown.png",
+    "var(--boardCardColor5)"
   ),
   new Tiles(
     23,
@@ -163,7 +175,8 @@ let tiles = [
     new TileType("property", rule.property),
     240,
     null,
-    "assets/img/Singapore/universal.png"
+    "assets/img/Singapore/universal.png",
+    "var(--boardCardColor5)"
   ),
   new Tiles(24, "Toll Gate", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(
@@ -172,7 +185,8 @@ let tiles = [
     new TileType("property", rule.property),
     260,
     null,
-    "assets/img/paris/paris1.png"
+    "assets/img/paris/paris1.png",
+    "var(--boardCardColor6)"
   ),
   new Tiles(
     26,
@@ -180,7 +194,8 @@ let tiles = [
     new TileType("property", rule.property),
     260,
     null,
-    "assets/img/paris/paris2.png"
+    "assets/img/paris/paris2.png",
+    "var(--boardCardColor6)"
   ),
   new Tiles(29, "City Tax", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(
@@ -189,7 +204,8 @@ let tiles = [
     new TileType("property", rule.property),
     280,
     null,
-    "assets/img/paris/eiffle tower.png"
+    "assets/img/paris/eiffle tower.png",
+    "var(--boardCardColor6)"
   ),
   new Tiles(28, "Police", new TileType("police", rule.police), 300, null, null),
   new Tiles(
@@ -198,7 +214,8 @@ let tiles = [
     new TileType("property", rule.property),
     300,
     null,
-    "assets/img/Korea/jeju.png"
+    "assets/img/Korea/jeju.png",
+    "var(--boardCardColor7)"
   ),
   new Tiles(
     30,
@@ -206,7 +223,8 @@ let tiles = [
     new TileType("property", rule.property),
     300,
     null,
-    "assets/img/Korea/seoul.png"
+    "assets/img/Korea/seoul.png",
+    "var(--boardCardColor7)"
   ),
   new Tiles(31, "Food Mall", new TileType("free", rule.free), 0, null, null),
   new Tiles(
@@ -215,7 +233,8 @@ let tiles = [
     new TileType("property", rule.property),
     320,
     null,
-    "assets/img/Korea/korea1.png"
+    "assets/img/Korea/korea1.png",
+    "var(--boardCardColor7)"
   ),
   new Tiles(33, "Toll Gate", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(
@@ -232,7 +251,8 @@ let tiles = [
     new TileType("property", rule.property),
     350,
     null,
-    "assets/img/Thailand/pagoda.png"
+    "assets/img/Thailand/pagoda.png",
+    "var(--boardCardColor8)"
   ),
   new Tiles(
     36,
@@ -240,7 +260,8 @@ let tiles = [
     new TileType("property", rule.property),
     400,
     null,
-    "assets/img/Thailand/shopping mall.png"
+    "assets/img/Thailand/shopping mall.png",
+    "var(--boardCardColor8)"
   ),
   new Tiles(
     37,
@@ -311,7 +332,7 @@ Player.prototype.landedOnProperty = function (
     //landed on other player's property Pay TAX!!!!
     let tax = property.tileAmount * 0.1;
     this.deduct(tax);
-    onPayTax(tax);
+    onPayTax(tax, property);
   } else {
     // landed on owned property collect rent
     let rent = property.tileAmount * 0.08;
@@ -338,13 +359,22 @@ Player.prototype.deduct = function (amt) {
   this.amount -= amt;
 };
 
-function Tiles(tileID, tileName, tileType, tileAmount, ownedBy = null, image) {
+function Tiles(
+  tileID,
+  tileName,
+  tileType,
+  tileAmount,
+  ownedBy = null,
+  image,
+  bgColor
+) {
   this.tileID = tileID;
   this.tileName = tileName;
   this.tileType = tileType;
   this.tileAmount = tileAmount;
   this.ownedBy = ownedBy;
   this.image = image;
+  this.bgColor = bgColor;
 }
 
 Tiles.prototype.isOwnedByPlayer = function (player) {
