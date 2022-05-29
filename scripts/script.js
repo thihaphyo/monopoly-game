@@ -49,7 +49,7 @@ const rollDice = () => {
 const movePlayer = () => {
     let p = currentPlayer.playeName == player1.playeName ? 1 : 2;
     if (!p.isInJail) {
-      for (let index = 0; index < 1; index++) {
+      for (let index = 0; index < currentRoll; index++) {
         if (currentPlayer.currentPosition == 11) {
           let pos =
             Number(
@@ -297,8 +297,7 @@ function onSuccessPassTravelBudget() {
       .getElementById("taxesCardsPanel")
       .setAttribute("class", "mysteryCardsPanel hidden");
     sub.next(true);
-  }, 5000);
-  sub.next(true);
+  }, 3000);
 }
 
 function onPromptUserToBuy(tile) {
@@ -340,11 +339,11 @@ function onFailMoneyProcess() {
       .getElementById("taxesCardsPanel")
       .setAttribute("class", "mysteryCardsPanel hidden");
     sub.next(true);
-  }, 5000);
-  sub.next(true);
+  }, 3000);
 }
 
 function onPayGovTax(amt) {
+  document.getElementById("kaching").play();
   $("#feesTaxesCardImg").attr("src", "assets/img/svg/taxes.svg");
   $("#ftTitle").html("CITY TAXES");
   $("#ftDescription").html(

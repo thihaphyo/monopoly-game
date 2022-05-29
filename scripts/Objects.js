@@ -295,7 +295,7 @@ Player.prototype.getLandingTile = function () {
 
 Player.prototype.landOnMysteryCard = function (onSuccess) {
   let random = Math.floor(Math.random() * (100 - 20) + 20);
-  let plusOrMinus = Math.floor(Math.random() * (0 - 1) + 1);
+  let plusOrMinus = Math.floor(Math.random() * 2);
   if (plusOrMinus == 0) {
     this.amount += random;
   } else {

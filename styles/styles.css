@@ -50,6 +50,7 @@ button {
   line-height: 32px;
   font-weight: 600;
   font-size: 1.1rem;
+  cursor: pointer;
 }
 .landingPage {
   display: flex;
@@ -293,6 +294,7 @@ button {
   font-size: 1.8rem;
   border-radius: 20px;
   border: none;
+  cursor: pointer;
 }
 .rollTheDice button:hover{
   box-shadow: 0px 15px 25px -5px rgba(darken(dodgerblue, 40%));
