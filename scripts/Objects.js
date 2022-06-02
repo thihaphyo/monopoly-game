@@ -197,9 +197,9 @@ let tiles = [
     "assets/img/paris/paris2.png",
     "var(--boardCardColor6)"
   ),
-  new Tiles(29, "City Tax", new TileType("tax", rule.tax), 100, null, null),
+  new Tiles(27, "City Tax", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(
-    27,
+    28,
     "Eiffle Tower",
     new TileType("property", rule.property),
     280,
@@ -207,9 +207,9 @@ let tiles = [
     "assets/img/paris/eiffle tower.png",
     "var(--boardCardColor6)"
   ),
-  new Tiles(28, "Police", new TileType("police", rule.police), 300, null, null),
+  new Tiles(29, "Police", new TileType("police", rule.police), 300, null, null),
   new Tiles(
-    29,
+    30,
     "Jeju Do",
     new TileType("property", rule.property),
     300,
@@ -218,7 +218,7 @@ let tiles = [
     "var(--boardCardColor7)"
   ),
   new Tiles(
-    30,
+    31,
     "Seoul",
     new TileType("property", rule.property),
     300,
@@ -226,9 +226,9 @@ let tiles = [
     "assets/img/Korea/seoul.png",
     "var(--boardCardColor7)"
   ),
-  new Tiles(31, "Food Mall", new TileType("free", rule.free), 0, null, null),
+  new Tiles(32, "Food Mall", new TileType("free", rule.free), 0, null, null),
   new Tiles(
-    32,
+    33,
     "Bulguka",
     new TileType("property", rule.property),
     320,
@@ -236,7 +236,6 @@ let tiles = [
     "assets/img/Korea/korea1.png",
     "var(--boardCardColor7)"
   ),
-  new Tiles(33, "Toll Gate", new TileType("tax", rule.tax), 100, null, null),
   new Tiles(
     34,
     "MysteryCard",
@@ -288,9 +287,9 @@ function Player(
 }
 
 Player.prototype.getLandingTile = function () {
-  let tile = tiles[this.currentPosition - 1];
-  console.log(this.currentPosition - 1);
-  return tile;
+//   let tile = tiles[this.currentPosition - 1];
+//   console.log(this.currentPosition - 1);
+  return tiles.filter((v) => v.tileID == this.currentPosition)[0];
 };
 
 Player.prototype.landOnMysteryCard = function (onSuccess) {

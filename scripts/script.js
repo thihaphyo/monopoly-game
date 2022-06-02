@@ -1,8 +1,9 @@
-let player1 = new Player("Jame", 400, []);
+let player1 = new Player("Jame", 1500, []);
 let player2 = new Player("Logan", 1500, []);
 let currentRoll = 0;
 let currentPlayer = player1;
 let log = [];
+let roundDone = false;
 let playersMoveOut = false;
 let isGameOver = false;
 let isPlayerDecided = false;
@@ -11,7 +12,6 @@ const { ReplaySubject } = rxjs;
 const sub = new ReplaySubject();
 
 const readyPlayers = () => {
-  tiles[1].ownedBy = player1;
   [player1, player2].forEach((v, i) => {
     let index = i + 1;
     if (v.playeName == currentPlayer.playeName) {
@@ -90,21 +90,7 @@ const movePlayer = () => {
           currentPlayer.currentPosition > 19 &&
           currentPlayer.currentPosition < 29
         ) {
-          if (currentPlayer.currentPosition == 28 && index == currentRoll - 1) {
-            console.log("Jailed");
-            let leftSide = 110 * 11 + 10;
-            let top = 10;
-            $("#p" + p + "Icon").css({ top: top, left: leftSide });
-            currentPlayer.currentPosition = 10;
-            if (currentPlayer.playeName == player1.playeName) {
-              currentPlayer.isInJail = true;
-              $("#p" + p + "Icon").css({ top: top, left: leftSide - 20 });
-            } else {
-              currentPlayer.isInJail = false;
-            }
-            currentPlayer.currentPosition++;
-          } else {
-            let pos =
+          let pos =
               Number(
                 $("#p" + p + "Icon")
                   .css("left")
@@ -112,7 +98,6 @@ const movePlayer = () => {
               ) - 120;
             $("#p" + p + "Icon").css({ left: pos });
             currentPlayer.currentPosition++;
-          }
         } else if (currentPlayer.currentPosition == 29) {
           let pos =
             Number(
@@ -124,7 +109,7 @@ const movePlayer = () => {
           currentPlayer.currentPosition++;
         } else if (
           currentPlayer.currentPosition > 29 &&
-          currentPlayer.currentPosition < 36
+          currentPlayer.currentPosition < 37
         ) {
           let pos =
             Number(
@@ -134,8 +119,13 @@ const movePlayer = () => {
             ) - 110;
           $("#p" + p + "Icon").css({ top: pos });
           currentPlayer.currentPosition++;
-        } else if (currentPlayer.currentPosition == 36) {
-          currentPlayer.currentPosition = 1;
+        } else if (currentPlayer.currentPosition == 37 && playersMoveOut) {
+          currentPlayer.currentPosition = 2;
+          if (currentPlayer.playeName == player1.playeName) {
+            p1.currentPosition = currentPlayer.currentPosition + 1;
+          } else {
+            p2.currentPosition = currentPlayer.currentPosition + 1;
+          }
           let pos =
             Number(
               $("#p" + p + "Icon")
@@ -156,8 +146,8 @@ const movePlayer = () => {
         console.log("ROll P" + currentPlayer.currentPosition);
         
       }
-  
-      gameLogic();
+
+      gameLogic(); 
   
       log.push(
         currentPlayer.playeName +
@@ -227,7 +217,7 @@ const gameLogic = () => {
   if (currentPlayer.playeName == player1.playeName) {
     let tile = player1.getLandingTile();
     console.log(title);
-   if (tile.tileType.rule == rule.property) {
+    if (tile.tileType.rule == rule.property) {
       player1.landedOnProperty(
         tile,
         onPromptUserToBuy,
@@ -397,7 +387,7 @@ function onSuccessMystery(random, plusOrMinus) {
     $("#description").html("You got $" + random + " gift card voucher");
     document.getElementById("free_money").play();
   } else {
-    $("#mysteryCardImg").attr("src", "assets/img/svg/winning.jpg");
+    $("#mysteryCardImg").attr("src", "assets/img/svg/hospital.jpg");
     $("#title").html("GOT INJURED");
     $("#description").html("Must pay $" + random + " hospital bills");
     document.getElementById("injured").play();
